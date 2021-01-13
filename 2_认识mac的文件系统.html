@@ -1,0 +1,289 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>认识mac的文件系统</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="favicon.png">
+        
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="VSCode_Cpp_macOS.html"><strong aria-hidden="true">1.</strong> VSCode Cpp on macOS</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="1_前言_课程说明.html"><strong aria-hidden="true">1.1.</strong> 前言 课程说明</a></li><li class="chapter-item expanded "><a href="2_认识mac的文件系统.html" class="active"><strong aria-hidden="true">1.2.</strong> 认识mac的文件系统</a></li><li class="chapter-item expanded "><a href="3_认识程序.html"><strong aria-hidden="true">1.3.</strong> 认识程序</a></li><li class="chapter-item expanded "><a href="4_认识终端和shell.html"><strong aria-hidden="true">1.4.</strong> 认识终端和shell</a></li></ol></li><li class="chapter-item expanded "><a href="About.html"><strong aria-hidden="true">2.</strong> About</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#2-认识mac的文件系统" id="2-认识mac的文件系统">2 认识mac的文件系统</a></h1>
+<ul>
+<li><a href="#2-%E8%AE%A4%E8%AF%86mac%E7%9A%84%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F">2 认识mac的文件系统</a>
+<ul>
+<li><a href="#%E5%AF%B9%E8%AE%BF%E8%BE%BE%E8%BF%9B%E8%A1%8C%E8%AE%BE%E7%BD%AE">对访达进行设置</a></li>
+<li><a href="#%E7%BB%A7%E7%BB%AD%E8%B0%83%E6%95%B4%E8%AE%BF%E8%BE%BE">继续调整访达</a></li>
+<li><a href="#%E8%A7%82%E5%AF%9F%E6%A0%B9%E7%9B%AE%E5%BD%95">观察根目录</a></li>
+<li><a href="#%E9%9A%90%E8%97%8F%E6%96%87%E4%BB%B6">隐藏文件</a></li>
+<li><a href="#%E8%A7%82%E5%AF%9F%E5%AE%B6%E7%9B%AE%E5%BD%95">观察家目录</a></li>
+<li><a href="#%E8%B7%AF%E5%BE%84">路径</a></li>
+<li><a href="#%E6%96%87%E4%BB%B6%E5%90%8D%E5%90%8E%E7%BC%80%E7%9A%84%E8%AF%B4%E6%98%8E">文件名后缀的说明</a></li>
+</ul>
+</li>
+</ul>
+<p>文件是什么呢？（展示下载文件夹中的图片，视频，txt，word等）
+就是存储在硬盘里面的一些东西
+如何更方便的看到这些文件从而对文件系统有一个更清晰的认识呢？
+首先我们需要对mac的文件管理器——访达进行一些设置</p>
+<h2><a class="header" href="#对访达进行设置" id="对访达进行设置">对访达进行设置</a></h2>
+<p><img src="media/16023345749067/16102065476101.jpg" alt="-w377" />
+打开<code>Show all filename extensions</code>（举例）
+<img src="media/16023345749067/16102066225601.jpg" alt="-w377" />
+打开<code>Hard disks</code>从而看到挂载的磁盘（看一下）
+打开你的家目录（一个房子的图标，我的是yangxijie）从而看到家目录</p>
+<h2><a class="header" href="#继续调整访达" id="继续调整访达">继续调整访达</a></h2>
+<p><img src="media/16023345749067/16102078622163.jpg" alt="-w247" />
+⌘2 按照列表查看
+⌥⌘S 打开边栏
+⌥⌘T 打开工具栏
+⌥⌘P 打开显示路径
+⌘/ 打开状态栏</p>
+<h2><a class="header" href="#观察根目录" id="观察根目录">观察根目录</a></h2>
+<p>什么是根目录？所有的文件和文件夹都存在根目录下。这里根目录就是你的内置硬盘
+调整上面的显示项目
+<img src="media/16023345749067/16102069338710.jpg" alt="-w141" />
+（分别解释每个文件夹的用处）
+Applications：你安装的应用程序都在这个文件夹
+Library：用来存应用程序的一些数据。比如微信的聊天记录就在这个里面哦
+System：一些系统（macOS）的文件，没事儿别乱碰就好了
+User：（打开系统偏好设置，查看用户）个人的文件就在这里</p>
+<h2><a class="header" href="#隐藏文件" id="隐藏文件">隐藏文件</a></h2>
+<p>显示隐藏文件：⇧⌘. 
+<img src="media/16023345749067/16102084084301.jpg" alt="-w163" />
+点开头的文件夹和文件会被隐藏。这是因为有些文件可能比较繁琐或者对用户来说完全没有用处，或者可能对其进行操作比较危险，所以创建这个文件/文件夹的时候就带上了<code>.</code>将其隐藏不让用户看到。</p>
+<p>但是也有一些不是点开头的文件或者文件夹被隐藏。那么为什么这些文件会被隐藏呢？因为系统不希望一般的使用者碰这些文件。因为可能你随手删掉一个系统就崩了。emmm，崩了就是说，电脑死机或者坏掉什么的。所以不要随便乱动。
+不过我们待会儿要用，所以就简单看看吧。
+主要是/bin目录。存放系统关键的二进制文件（什么是二进制文件我下节课会讲）（大家记住这里有个date就好了）</p>
+<h2><a class="header" href="#观察家目录" id="观察家目录">观察家目录</a></h2>
+<p><img src="media/16023345749067/16102078075824.jpg" alt="-w168" />
+其实你的边栏（打开访达设置）显示的就是这里的文件夹（没什么神秘的，与别的文件夹没有任何区别）</p>
+<h2><a class="header" href="#路径" id="路径">路径</a></h2>
+<p>根目录<code>/</code> == <code>Macintosh HD</code>
+家目录<code>~</code> == <code>/Users/yangxijie</code>（你的用户名）
+树状分级
+（试着写出路径）</p>
+<h2><a class="header" href="#文件名后缀的说明" id="文件名后缀的说明">文件名后缀的说明</a></h2>
+<p>文件名后缀是文件名的一部分
+文件名后缀只是为了告诉系统该程序默认由哪个应用程序来打开（txt 文本编辑，jpg 预览，mp4 QuickTime）
+你也可以不写后缀，但是这样系统就不知道要用哪些程序去打开/要如何打开。所以一定要写好后缀哦（但是后面会说到两种文件：二进制可执行文件和文本文件一般是不写后缀名的）</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="1_前言_课程说明.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="3_认识程序.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="1_前言_课程说明.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="3_认识程序.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

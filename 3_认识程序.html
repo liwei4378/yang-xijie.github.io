@@ -1,0 +1,312 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>认识程序</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="favicon.png">
+        
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="VSCode_Cpp_macOS.html"><strong aria-hidden="true">1.</strong> VSCode Cpp on macOS</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="1_前言_课程说明.html"><strong aria-hidden="true">1.1.</strong> 前言 课程说明</a></li><li class="chapter-item expanded "><a href="2_认识mac的文件系统.html"><strong aria-hidden="true">1.2.</strong> 认识mac的文件系统</a></li><li class="chapter-item expanded "><a href="3_认识程序.html" class="active"><strong aria-hidden="true">1.3.</strong> 认识程序</a></li><li class="chapter-item expanded "><a href="4_认识终端和shell.html"><strong aria-hidden="true">1.4.</strong> 认识终端和shell</a></li></ol></li><li class="chapter-item expanded "><a href="About.html"><strong aria-hidden="true">2.</strong> About</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#3-认识程序" id="3-认识程序">3 认识程序</a></h1>
+<ul>
+<li><a href="#3-%E8%AE%A4%E8%AF%86%E7%A8%8B%E5%BA%8F">3 认识程序</a>
+<ul>
+<li><a href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6%E5%92%8C%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6">二进制可执行文件和文本文件</a></li>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%A8%8B%E5%BA%8F%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6">什么是程序/二进制可执行文件</a>
+<ul>
+<li><a href="#%E4%BB%A5%E5%A4%87%E5%BF%98%E5%BD%95%E4%B8%BA%E4%BE%8B">以备忘录为例：</a></li>
+<li><a href="#%E6%AE%B5%E8%90%BD%E6%80%BB%E7%BB%93">段落总结</a></li>
+<li><a href="#%E5%BC%95%E5%85%A5%E7%BB%88%E7%AB%AF">引入终端</a></li>
+<li><a href="#%E8%87%AA%E5%B7%B1%E5%86%99%E7%9A%84say_hello">自己写的say_hello</a></li>
+<li><a href="#bindate">/bin/date</a></li>
+<li><a href="#binmkdir">/bin/mkdir</a></li>
+</ul>
+</li>
+<li><a href="#%E9%99%84">附</a></li>
+</ul>
+</li>
+</ul>
+<h2><a class="header" href="#二进制可执行文件和文本文件" id="二进制可执行文件和文本文件">二进制可执行文件和文本文件</a></h2>
+<p>这两种文件可以说是文件系统最基本的两种文件了
+它们有什么不同呢？
+计算机存储，本质都是0和1存储。我们先说文本文件吧：
+文本文件：存的是字符，一个接一个的字符。每个字符都有一串0、1构成的编码。打开文本文件的时候，系统将这些编码挨个读出来就成为了文本文件。</p>
+<h2><a class="header" href="#什么是程序二进制可执行文件" id="什么是程序二进制可执行文件">什么是程序/二进制可执行文件</a></h2>
+<p><strong>1</strong> 从汉语的概念来说：程序就是按照一定过程执行的东西</p>
+<p><strong>2</strong> 从用户使用/程序自身的性质的角度来说：（我的理解）input输入，output输出。在计算机里面：有输入、有输出就算程序。
+参数是特殊的输入
+执行某种操作是特殊的输出</p>
+<p>举例子：（先说一下输入与输出的特点）
+大家经常使用的可能是有图形界面的应用程序，也就是在<code>应用程序</code>文件夹中的后缀为<code>.app</code>的程序。我们先从这些大家熟悉的app入手，之后再说大家可能很少接触的二进制可执行文件</p>
+<p><img src="media/16023345749067/16104219910145.jpg" alt="-w586" />
+<img src="media/16023345749067/16104216518527.jpg" alt="-w586" /></p>
+<h3><a class="header" href="#以备忘录为例" id="以备忘录为例">以备忘录为例：</a></h3>
+<p>键盘敲了一些字，屏幕上就显示了一行字（输入：敲键盘；输出：备忘录中多了一行字）
+鼠标点击，在光标移动（输入：鼠标点击；输出：光标移动）
+右键点击，出现辅助菜单（输入：带参数⌃的鼠标点击；输出：出现菜单）
+点击新建一个列表，计算机就执行了新建一个列表的操作，新建了一个列表（输入：点击某个按钮/图标；输出：执行某个操作）</p>
+<h3><a class="header" href="#段落总结" id="段落总结">段落总结</a></h3>
+<p>我们简单总结一下：从使用的角度来看，有输入有输出就可以算作是一个程序。大家日常接触的就是在<code>应用程序</code>文件夹中的程序。输入会有普通的输入（点击），也有带参数的输入（右键，⌃点击）；输出有普通的输出（出现了一行字，显示了什么画面），也有特殊的输出——执行了某种操作</p>
+<p>接下来我们要认识一些大家平常很少见的程序：二进制可执行文件。
+<strong>3</strong> 从计算机底层的角度来说：程序就是一堆机器码（0、1），就是二进制可执行文件，计算机底层硬件（处理器）可以读取这些机器码然后实现相应的计算/进行相应的处理</p>
+<h3><a class="header" href="#引入终端" id="引入终端">引入终端</a></h3>
+<p>要跟这些程序/二进制可执行文件打交道，我们首先需要入门一下<code>终端.app</code>。从启动台打开（相当于在访达中找到<code>终端.app</code>然后双击打开）。
+终端也是程序（接受你的字符串（命令）为输入，也会有一些输出），我们通过终端与一些没有图形界面的程序进行交互。
+但是具体来说，终端提供的是一个输入命令（字符串）和输出提示（字符串）的环境，而shell则负责解析从终端输入的命令。
+<a href="https://blog.csdn.net/weixin_38214171/article/details/90050340">CSDN｜终端、shell的区别与联系</a>
+<a href="https://baike.baidu.com/item/shell/99702">百度百科｜shell</a></p>
+<pre><code>在计算机科学中，shell俗称壳（用来区别于核），是指“为使用者提供操作界面”的软件（命令解析器）。
+它接收用户命令，然后调用相应的应用程序。
+</code></pre>
+<p>这一小节的标题是引入终端，我们这节课只是带大家初步认识终端，下节课我们会对终端和shell做更深入的了解</p>
+<p>“它（shell）接收用户命令，然后调用相应的应用程序。”我们接下来就用终端通过shell调用一些没有图形界面的程序（二进制可执行文件），看看它们的输入输出都是什么</p>
+<h3><a class="header" href="#自己写的say_hello" id="自己写的say_hello">自己写的say_hello</a></h3>
+<p>（⌘I/空格看到图标上的exec）
+（如何告诉shell我们要调用这个程序呢？写出它的路径就好了）
+复制路径：右键，⌥；⌥⌘C；拖动到终端
+（直观输入+直观输出：字符串）</p>
+<h3><a class="header" href="#bindate" id="bindate">/bin/date</a></h3>
+<p>显示日期</p>
+<pre><code class="language-shell">/bin/date
+/bin/date &quot;+DATE: %Y-%m-%d%nTIME: %H:%M:%S&quot;
+</code></pre>
+<p>（直观输出，没有输入）
+（添加参数）
+<img src="media/16104236930649/16104489499143.jpg" alt="-w572" /></p>
+<h3><a class="header" href="#binmkdir" id="binmkdir">/bin/mkdir</a></h3>
+<p>创建文件夹
+接收一个参数/输入：将这个文件夹创建在哪里
+在桌面创建<code>newFolder</code>
+输出：执行了<code>创建文件夹</code>的操作</p>
+<h2><a class="header" href="#附" id="附">附</a></h2>
+<p>本节课所用可执行文件<code>say_hello</code>的C++代码文件</p>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+
+int main() {
+  char name[100];
+  printf(&quot;Please input your name: &quot;);
+  scanf(&quot;%s&quot;, name);
+  printf(&quot;Hello, %s&quot;, name);
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="2_认识mac的文件系统.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="4_认识终端和shell.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="2_认识mac的文件系统.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="4_认识终端和shell.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
