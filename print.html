@@ -526,9 +526,12 @@ ls -l
 <p>移动文件与复制文件</p>
 <p>移动文件到原地相当于重命名</p>
 <h4><a class="header" href="#open" id="open">open</a></h4>
-<pre><code>open foo.md
+<pre><code class="language-bash">open foo.md
 open -a Visual\ Studio\ Code.app foo.md
+open $(pwd)
 </code></pre>
+<p><code>-a</code>参数制定打开的程序（需要使用程序全名）
+<code>$(pwd)</code>表示当前目录，<code>open $(pwd)</code>表示用Finder打开shell当前的工作目录</p>
 <h4><a class="header" href="#man" id="man">man</a></h4>
 <p>以date为例</p>
 <p>（有的没有）</p>
