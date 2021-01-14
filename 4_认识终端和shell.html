@@ -248,7 +248,7 @@
 <h2><a class="header" href="#与路径无关" id="与路径无关">与路径无关</a></h2>
 <h3><a class="header" href="#which" id="which">which</a></h3>
 <p>查看shell如何解释后面的命令</p>
-<pre><code class="language-shell">which which
+<pre><code class="language-bash">which which
 which echo
 which history
 which pwd
@@ -257,12 +257,12 @@ which cd
 <p>得到结果：<code>which: shell built-in command</code></p>
 <h3><a class="header" href="#echo" id="echo">echo</a></h3>
 <p>将后面输入的东西返回。看起来很没用，但是在显示变量的时候会显示变量的值而不是那个字符串</p>
-<pre><code class="language-shell">echo hello
+<pre><code class="language-bash">echo hello
 echo $SHELL
 </code></pre>
 <p>查看正在使用的shell <code>echo $SHELL</code>。其实还有好多其他的shell，但是我们用macOS默认的shell——zsh就好了。（小知识：在10.15Catalina之前macOS默认的shell是bash，其实二者的区别并不大，都可以解析你输入的命令）</p>
 <h3><a class="header" href="#history" id="history">history</a></h3>
-<pre><code class="language-shell">history
+<pre><code class="language-bash">history
 history -5
 </code></pre>
 <h3><a class="header" href="#date" id="date">date</a></h3>
@@ -279,7 +279,7 @@ history -5
 <h3><a class="header" href="#pwd" id="pwd">pwd</a></h3>
 <p>接下来开始介绍文件路径——绝对路径和相对路径</p>
 <p>我们之前所说的路径都是绝对路径，也就是从根目录开始。但其实还有相对路径。</p>
-<pre><code class="language-shell">pwd
+<pre><code class="language-bash">pwd
 </code></pre>
 <p>开始介绍shell的当前工作路径</p>
 <p><code>.</code> <code>..</code> <code>...</code> <code>-</code> <code>~</code></p>
@@ -305,12 +305,12 @@ history -5
 （参考<a href="https://eesast.github.io/training2020/linux-webserver/linux.html">2020年清华大学电子系科协暑培｜Linux</a>）</p>
 <h4><a class="header" href="#ls" id="ls">ls</a></h4>
 <p>列出当前文件夹下的所有文件</p>
-<pre><code class="language-shell">ls
+<pre><code class="language-bash">ls
 ls -a
 ls -l
 </code></pre>
 <h4><a class="header" href="#cat" id="cat">cat</a></h4>
-<pre><code class="language-shell">cat hello.txt
+<pre><code class="language-bash">cat hello.txt
 </code></pre>
 <h4><a class="header" href="#clear" id="clear">clear</a></h4>
 <p>清空终端中存在的已经执行过的命令</p>
@@ -337,7 +337,7 @@ open -a Visual\ Studio\ Code.app foo.md
 <h2><a class="header" href="#shell常用的操作" id="shell常用的操作">shell常用的操作</a></h2>
 <h4><a class="header" href="#输出流重定向" id="输出流重定向">输出流重定向</a></h4>
 <p>还记得<code>echo</code>吗？</p>
-<pre><code class="language-shell">touch my.txt
+<pre><code class="language-bash">touch my.txt
 echo &quot;hello world&quot; &gt; my.txt
 echo &quot;hhhh&quot; &gt; my.txt
 echo &quot;hahahaha&quot; &gt;&gt; my.txt
@@ -345,7 +345,7 @@ echo &quot;hahahaha&quot; &gt;&gt; my.txt
 <h4><a class="header" href="#管道" id="管道">管道</a></h4>
 <p>上一个命令（程序）的输出作为下一个命令的输入</p>
 <p>比如我想看看我刚刚创建了什么文件夹来着：我可以一条一条翻，但是我也可以搜索啊！</p>
-<pre><code class="language-shell">history
+<pre><code class="language-bash">history
 history | grep &quot;mkdir&quot;
 </code></pre>
 <h4><a class="header" href="#c" id="c">⌃C</a></h4>
@@ -358,7 +358,7 @@ history | grep &quot;mkdir&quot;
 <p><a href="https://missing-semester-cn.github.io">计算机教育中缺失的一课 The Missing Semester of Your CS Education 中文版</a></p>
 <h4><a class="header" href="#where" id="where">where</a></h4>
 <p>where也是一个shell内建命令。where和which的功能差不多，也是告诉我们一个命令如何被shell解析。区别是，shell能够告诉我们shell去解析这个命令的全部可能性。</p>
-<pre><code class="language-shell">where which
+<pre><code class="language-bash">where which
 </code></pre>
 <p>我们可以看到，其实在shell输入命令<code>which</code>的时候，shell觉得：啊，这个单词有两种方法可以被我解析：第一种是我自己带的内建程序；第二种是系统自带的程序；不过我自己用我自己自带的程序效率更快，毕竟是我自己的东西，所以就用自己的喽。其实，我感觉which就是where的第一行，对吧。</p>
 <h4><a class="header" href="#vim极简入门只要能写东西进去就好了" id="vim极简入门只要能写东西进去就好了">vim极简入门（只要能写东西进去就好了）</a></h4>
@@ -369,7 +369,7 @@ history | grep &quot;mkdir&quot;
 <h4><a class="header" href="#chmod" id="chmod">chmod</a></h4>
 <p>修改文件权限。</p>
 <p>如果你希望一个文件有可执行权限：</p>
-<pre><code class="language-shell">chmod a+x &lt;file&gt;
+<pre><code class="language-bash">chmod a+x &lt;file&gt;
 </code></pre>
 <p>（没有深入）</p>
 <h2><a class="header" href="#回顾" id="回顾">回顾</a></h2>
@@ -391,7 +391,7 @@ history | grep &quot;mkdir&quot;
 <p>接下来我们简单说一下这个事情。</p>
 <h3><a class="header" href="#环境变量" id="环境变量">环境变量</a></h3>
 <p>查看环境变量</p>
-<pre><code class="language-shell">echo $PATH
+<pre><code class="language-bash">echo $PATH
 </code></pre>
 <p>其中冒号是分隔符。当你给shell扔了一个命令之后，shell先在自己的内建程序中找有没有这个单词，没找到再到环境变量去找。
 （回顾where）</p>
@@ -409,8 +409,8 @@ history | grep &quot;mkdir&quot;
 <p><code>~/.zshrc</code></p>
 <h3><a class="header" href="#配置终端---打造舒适终端" id="配置终端---打造舒适终端">配置终端 - 打造舒适终端</a></h3>
 <p>终端配置(（拿我自己的电脑说一下事儿）（给出链接大家自己想配可以配置一下）如何配置很漂亮的终端）</p>
-<p><img src="media/16023345749067/16104419908790.jpg" alt="-w600" />
-可以参考：</p>
+<p><img src="media/16023345749067/16104419908790.jpg" alt="-w600" /></p>
+<p>可以参考：</p>
 <p><a href="https://segmentfault.com/a/1190000014992947">iTerm2 + Oh My Zsh 打造舒适终端体验</a></p>
 <p><a href="https://www.cnblogs.com/xishuai/p/mac-iterm2.html">Mac OS 终端利器 iTerm2</a></p>
 <p>如果有机会我会出后续的教程</p>
@@ -418,8 +418,8 @@ history | grep &quot;mkdir&quot;
 <p>用户yxj和sudo root（whoami who等（系统偏好设置的切换用户（不过看我视频教程的人应该都是用自己的mac，所以不会牵扯到这个问题。如果你是linux服务器管理员，那么可能要设置多个用户了。））</p>
 <h3><a class="header" href="#查看所有的shell内建命令" id="查看所有的shell内建命令">查看所有的shell内建命令</a></h3>
 <p><code>man builtins</code>可以查看shell的所有内建命令</p>
-<p><img src="media/16104420934135/16104423335475.jpg" alt="-w600" />
-<code>man zshbuiltins</code>可以查看到zsh的所有内建命令。（也可以先<code>man zsh</code>，然后在下方找到这个zshbuiltins）</p>
+<p><img src="media/16104420934135/16104423335475.jpg" alt="-w600" /></p>
+<p><code>man zshbuiltins</code>可以查看到zsh的所有内建命令。（也可以先<code>man zsh</code>，然后在下方找到这个zshbuiltins）</p>
 <h2><a class="header" href="#结束" id="结束">结束</a></h2>
 <p>大家估计听完这四节课都着急了，怎么还没见到VSCode的影子呢？</p>
 <p>别急，现在你已经有了足够的基础可以听懂我接下来在讲什么，那我们就开始进入VSCode的大门吧！！！</p>
