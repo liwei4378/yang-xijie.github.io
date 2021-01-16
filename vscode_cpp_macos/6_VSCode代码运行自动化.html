@@ -152,11 +152,11 @@
 <ul>
 <li><a href="#6-vs-code-%E4%BB%A3%E7%A0%81%E8%BF%90%E8%A1%8C%E8%87%AA%E5%8A%A8%E5%8C%96">6 VS Code 代码运行自动化</a></li>
 <li><a href="#%E5%BC%95%E5%85%A5">引入</a></li>
+<li><a href="#%E8%A1%A5%E5%85%85%E6%9B%B4%E6%94%B9%E8%AE%BE%E7%BD%AE%E4%BD%BF%E5%BE%97%E6%96%87%E4%BB%B6%E4%B8%8D%E5%87%BA%E7%8E%B0%E5%9C%A8%E7%AE%A1%E7%90%86%E5%99%A8">补充：更改设置使得文件不出现在管理器</a></li>
 <li><a href="#code-runner">Code Runner</a>
 <ul>
 <li><a href="#%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D">功能介绍</a></li>
 <li><a href="#%E8%AE%BE%E7%BD%AE%E5%BF%AB%E6%8D%B7%E9%94%AE">设置快捷键</a></li>
-<li><a href="#%E6%8E%92%E9%99%A4%E6%96%87%E4%BB%B6">排除文件</a></li>
 </ul>
 </li>
 <li><a href="#%E6%9C%80%E5%90%8E%E8%AF%B4%E5%87%A0%E5%8F%A5">最后说几句</a></li>
@@ -168,6 +168,19 @@
 ./say_hi.out
 </code></pre>
 <p>这个，还挺长的，敲起来挺麻烦的。如何一键执行这两个代码呢？我们需要下载一个插件：<code>Code Runner</code>（简单查看<code>Code Runner</code>的说明；我已经将我们执行代码需要用的项摘了出来；在哪里设置这些选项呢？<code>settings.json</code>）</p>
+<h1><a class="header" href="#补充更改设置使得文件不出现在管理器" id="补充更改设置使得文件不出现在管理器">补充：更改设置使得文件不出现在管理器</a></h1>
+<pre><code class="language-json">{
+  // 添加希望被忽略的文件,这样一些文件虽然存在于当前工作目录下,但是不会被显示在左侧的文件浏览器里
+  &quot;files.exclude&quot;: {
+    // dSYM文件具有调试信息,普通使用的话不看到它就可以了
+    &quot;**/*.dSYM&quot;: true,
+    &quot;**/*.out&quot;: true,
+  },
+}
+</code></pre>
+<p>为什么是排除（exclude）而不是直接删除呢？因为一个可执行文件也就几十K，而且如果有新的执行文件生成还会覆盖原来的，多出来的那些不管也可以</p>
+<p>如果你要删的话那就打开访达按类型排序、然后⇧选中删掉就可以了</p>
+<p>（你也可以尝试在之后的执行语句中添加<code>rm</code>）</p>
 <h1><a class="header" href="#code-runner" id="code-runner">Code Runner</a></h1>
 <p>在<code>settings.json</code>中添加（注意<code>json</code>文件的格式）：</p>
 <pre><code class="language-json">{
@@ -225,13 +238,6 @@
   // Whether to ignore selection to always run entire file. (Default is false)
   &quot;code-runner.ignoreSelection&quot;: true,
   // --------------------------------------------------------------------------------------
-  // 添加希望被忽略的文件,这样一些文件虽然存在于当前工作目录下,但是不会被显示在左侧的文件浏览器里
-  &quot;files.exclude&quot;: {
-    // dSYM文件具有调试信息,普通使用的话不看到它就可以了
-    &quot;**/*.dSYM&quot;: true,
-    &quot;**/*.out&quot;: true,
-  },
-  // --------------------------------------------------------------------------------------
 }
 </code></pre>
 <h2><a class="header" href="#功能介绍" id="功能介绍">功能介绍</a></h2>
@@ -242,14 +248,11 @@
 <p>原本的快捷键太不顺手了</p>
 <img src="media/16104435266580/16107331462916.jpg" style="zoom:40%"/>
 <p>修改为：⌘R ⇧⌘R（搜索code run）</p>
-<h2><a class="header" href="#排除文件" id="排除文件">排除文件</a></h2>
-<p>（打开设置看一下）</p>
-<p>（说一下一个可执行文件也就几十K，而且还是覆盖写的，多出来的那些不管也可以；你要删的话打开访达按类型排序、然后⇧选中删掉就可以了；或者直接添加<code>rm</code>）</p>
 <h1><a class="header" href="#最后说几句" id="最后说几句">最后说几句</a></h1>
 <p>如果你不需要注释，那么就可以直接删除。还记得我在第一节课说的，网上的教程良莠不齐吗？一个很大的原因就是网上的教程没什么注释。作为一个初学者，第一次用<code>VS Code</code>，如果看到的配置文件没有注释，不知道这些插件从哪里来，不知道怎么看插件的使用说明书，也不知道命令怎么编写组合，那当然会看不懂网上的教程了。</p>
 <p>我做这份教程的初心就是，希望大家能真正从零开始，知道这些配置的来源，能够自己搭建自己喜欢的编程环境。到了这节课大家其实已经能感觉到，编译、运行并不是什么复杂的事情，借助<code>VS Code</code>的<code>Code Runner</code>插件，结合自己前几节课所学的命令行，再加上<code>VS Code</code>的个性化配置，你已经可以做到这件事情了。</p>
 <p>但其实还有一件事情需要去做。我们发现，<code>Code Runner</code>这个插件只能去运行代码，但是不能调试代码。如果我在代码的某一行打上断点，希望程序运行到这里停下来，你发现<code>Code Runner</code>无法做到这件事情。这就是我们下节课要学习的东西：用<code>VS Code</code>调试<code>Cpp</code>代码。</p>
-<p>不出意外的话，下节课应该是最后一节课了！大家加油！</p>
+<p>不出意外的话，下节课应该是最后一节课了！</p>
 
                     </main>
 
