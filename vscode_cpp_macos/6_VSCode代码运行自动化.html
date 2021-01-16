@@ -1,0 +1,335 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn" class="sidebar-visible no-js ayu">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>6 VSCode代码运行自动化 - yxj</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="yxj's own site">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "ayu";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../foreword/site_info.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../vscode_cpp_macos/0_about.html">Cpp in VSCode on macOS</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/1_前言_课程说明.html">1 前言和课程说明</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/2_认识mac的文件系统.html">2 认识mac的文件系统</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/3_认识程序.html">3 认识程序</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/4_认识终端和shell.html">4 认识终端和shell</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/5_开启VSCode的大门.html">5 开启VSCode的大门</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/6_VSCode代码运行自动化.html" class="active">6 VSCode代码运行自动化</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/7_用VSCode调试Cpp代码.html">7 用VSCode调试Cpp代码</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/8_课程回顾.html">8 课程回顾</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/9_others.html">其他</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../postscript/support.html">Support</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../postscript/site_build.html">About</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu (default)</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">yxj</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        <a href="https://github.com/Yang-Xijie/yang-xijie.github.io" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#6-vs-code-代码运行自动化" id="6-vs-code-代码运行自动化">6 VS Code 代码运行自动化</a></h1>
+<ul>
+<li><a href="#6-vs-code-%E4%BB%A3%E7%A0%81%E8%BF%90%E8%A1%8C%E8%87%AA%E5%8A%A8%E5%8C%96">6 VS Code 代码运行自动化</a></li>
+<li><a href="#%E5%BC%95%E5%85%A5">引入</a></li>
+<li><a href="#code-runner">Code Runner</a>
+<ul>
+<li><a href="#%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D">功能介绍</a></li>
+<li><a href="#%E8%AE%BE%E7%BD%AE%E5%BF%AB%E6%8D%B7%E9%94%AE">设置快捷键</a></li>
+<li><a href="#%E6%8E%92%E9%99%A4%E6%96%87%E4%BB%B6">排除文件</a></li>
+</ul>
+</li>
+<li><a href="#%E6%9C%80%E5%90%8E%E8%AF%B4%E5%87%A0%E5%8F%A5">最后说几句</a></li>
+</ul>
+<p>这一节课我们要来让VSCode自动编译、运行我们的代码。说是自动，其实是用一个快捷键代替我们再终端重复敲命令的过程。接下来就让我们开始！</p>
+<h1><a class="header" href="#引入" id="引入">引入</a></h1>
+<p>回忆之前我们编译、运行代码的过程，大概是需要在集成终端输入：</p>
+<pre><code class="language-bash">g++ say_hi.cpp -o say_hi.out -W -Wall -O2 -std=c++17
+./say_hi.out
+</code></pre>
+<p>这个，还挺长的，敲起来挺麻烦的。如何一键执行这两个代码呢？我们需要下载一个插件：Code Runner（简单查看Code Runner的说明；我已经将我们执行代码需要用的项摘了出来；在哪里设置这些选项呢？settings.json）</p>
+<h1><a class="header" href="#code-runner" id="code-runner">Code Runner</a></h1>
+<p>在settings.json中添加（注意json文件的格式）：</p>
+<pre><code class="language-json">{
+  // --------------------------------------------------------------------------------------
+  // Code Runner
+  // To run code:
+  //   use shortcut &quot;⌃ ⌥ N&quot; *
+  //   or press F1 and then select/type Run Code,
+  //   or right click the Text Editor and then click Run Code in editor context menu
+  //   or click Run Code button in editor title menu
+  //   or click Run Code button in context menu of file explorer
+  // To stop the running code:
+  //   use shortcut &quot;⌃ ⌥ M&quot; *
+  //   or press F1 and then select/type Stop Code Run
+  //   or right click the Output Channel and then click Stop Code Run in context menu
+  &quot;code-runner.executorMap&quot;: {
+    // Introduction:
+    //   Make sure the executor PATH of each language is set in the environment variable.
+    //   You could also add entry into &quot;code-runner.executorMap&quot; to set the executor PATH.
+    // Supported customized parameters:
+    //   $workspaceRoot: The path of the folder opened in VS Code
+    //   $dir: The directory of the code file being run
+    //   $fullFileName: The full name of the code file being run
+    //   $fileName: The base name of the code file being run, that is the file without the directory
+    //   $fileNameWithoutExt: The base name of the code file being run without its extension
+    /* ------ 编译、运行只有一个文件的cpp文件 ------ */
+    &quot;cpp&quot;: &quot;g++ $fullFileName -o $dir\&quot;$fileNameWithoutExt\&quot;\&quot;.out\&quot; -W -Wall -O2 -std=c++17 &amp;&amp; $dir\&quot;$fileNameWithoutExt\&quot;\&quot;.out\&quot;&quot;,
+    // 其中 $fullFileName 是绝对路径，是主文件
+    // 自己决定是否加入 &amp;&amp; rm $dir\&quot;$fileNameWithoutExt\&quot;\&quot;.out\&quot;（也可以添加&quot;files.exclude&quot;）
+    /* ------ 编译、运行多个cpp文件 ------ */
+    // &quot;cpp&quot;: &quot;g++ $fullFileName &lt;file_to_link&gt; -o $dir\&quot;$fileNameWithoutExt\&quot;\&quot;.out\&quot; -W -Wall -O2 -std=c++17 &amp;&amp; $dir\&quot;$fileNameWithoutExt\&quot;\&quot;.out\&quot;&quot;,
+    // &lt;file_to_link&gt;的写法：
+    //   一般的，你也可以直接写绝对路径
+    //     \&quot;/path/xxxx.cpp\&quot;
+    //   如果你链接的cpp文件和主文件在一个目录下：
+    //     $dir\&quot;xxxx.cpp\&quot;
+    //   更一般的，如果你链接的cpp文件不和主文件在一个目录下，需要从当前VSCode的工作目录补充相对路径从而形成绝对路径：
+    //     $workspaceRoot\&quot;relative/path/xxxx.cpp\&quot;
+    /* ------ 编译c文件 ------ */
+    &quot;c&quot;: &quot;gcc $fullFileName -o $dir\&quot;$fileNameWithoutExt\&quot;\&quot;.out\&quot; -W -Wall -O2 -std=c17 &amp;&amp; $dir\&quot;$fileNameWithoutExt\&quot;\&quot;.out\&quot;&quot;,
+    // &quot;cpp&quot;: &quot;gcc $fullFileName &lt;file_to_link&gt; -o $dir\&quot;$fileNameWithoutExt\&quot;\&quot;.out\&quot; -W -Wall -O2 -std=c17 &amp;&amp; $dir\&quot;$fileNameWithoutExt\&quot;\&quot;.out\&quot;&quot;,
+  },
+  // Whether to clear previous output before each run (default is false):
+  &quot;code-runner.clearPreviousOutput&quot;: true,
+  // Whether to save all files before running (default is false):
+  &quot;code-runner.saveAllFilesBeforeRun&quot;: false,
+  // Whether to save the current file before running (default is false):
+  &quot;code-runner.saveFileBeforeRun&quot;: true,
+  // Whether to show extra execution message like [Running] ... and [Done] ... (default is true):
+  &quot;code-runner.showExecutionMessage&quot;: true, // cannot see that message is you set &quot;code-runner.runInTerminal&quot; to true
+  // Whether to run code in Integrated Terminal (only support to run whole file in Integrated Terminal, neither untitled file nor code snippet) (default is false):
+  &quot;code-runner.runInTerminal&quot;: true, // cannot input data when setting to false
+  // Whether to preserve focus on code editor after code run is triggered (default is true, the code editor will keep focus; when it is false, Terminal or Output Channel will take focus):
+  &quot;code-runner.preserveFocus&quot;: false,
+  // Whether to ignore selection to always run entire file. (Default is false)
+  &quot;code-runner.ignoreSelection&quot;: true,
+  // --------------------------------------------------------------------------------------
+  // 添加希望被忽略的文件,这样一些文件虽然存在于当前工作目录下,但是不会被显示在左侧的文件浏览器里
+  &quot;files.exclude&quot;: {
+    &quot;**/*.dSYM&quot;: true,
+    &quot;**/*.out&quot;: true,
+  },
+  // --------------------------------------------------------------------------------------
+}
+</code></pre>
+<h2><a class="header" href="#功能介绍" id="功能介绍">功能介绍</a></h2>
+<p>查看我写的注释</p>
+<p>鼠标悬停查看提示</p>
+<p>光标放在选项或选项设置处 ⌘I 以打开 IntellSense</p>
+<h2><a class="header" href="#设置快捷键" id="设置快捷键">设置快捷键</a></h2>
+<p>原本的快捷键太不顺手了</p>
+<p><img src="media/16104435266580/16107331462916.jpg" alt="-w1516" /></p>
+<p>修改为：⌘R ⇧⌘R（搜索code run）</p>
+<h2><a class="header" href="#排除文件" id="排除文件">排除文件</a></h2>
+<p>（打开设置看一下）
+（说一下一个可执行文件也就几十K，而且还是覆盖写的，多出来的那些不管也可以；你要删的话打开访达按类型排⇧选中删就可以了；或者直接添加rm）</p>
+<h1><a class="header" href="#最后说几句" id="最后说几句">最后说几句</a></h1>
+<p>如果你不需要注释，那么就可以直接删除。还记得我在第一节课说的，网上的教程良莠不齐吗？一个很大的原因就是网上的教程没什么注释。作为一个初学者，第一次用VSCode，如果看到的配置文件没有注释，不知道这些插件从哪里来，不知道怎么看插件的使用说明书，也不知道命令怎么编写组合，那当然会看不懂网上的教程了。</p>
+<p>我做这份教程的初心就是，希望大家能真正从零开始，知道这些配置的来源，能够自己搭建自己喜欢的编程环境。到了这节课大家其实已经能感觉到，编译、运行并不是什么复杂的事情，借助VSCode的Code Runner插件，结合自己前几节课所学的命令行，再加上VSCode的个性化配置，你已经可以做到这件事情了。</p>
+<p>但其实还有一件事情需要去做。我们发现，Code Runner这个插件只能去运行代码，但是不能调试代码。如果我在代码的某一行打上断点，希望程序运行到这里停下来，你发现Code Runner无法做到这件事情。这就是我们下节课要学习的东西：用VSCode调试Cpp代码。</p>
+<p>不出意外的话，下节课应该是最后一节课了！大家加油！</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../vscode_cpp_macos/5_开启VSCode的大门.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../vscode_cpp_macos/7_用VSCode调试Cpp代码.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../vscode_cpp_macos/5_开启VSCode的大门.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../vscode_cpp_macos/7_用VSCode调试Cpp代码.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
