@@ -93,7 +93,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../foreword/site_info.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../vscode_cpp_macos/0_about.html">Cpp in VSCode on macOS</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/1_前言_课程说明.html">1 前言和课程说明</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/2_认识mac的文件系统.html">2 认识mac的文件系统</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/3_认识程序.html">3 认识程序</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/4_认识终端和shell.html">4 认识终端和shell</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/5_开启VSCode的大门.html">5 开启VSCode的大门</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/6_VSCode代码运行自动化.html" class="active">6 VSCode代码运行自动化</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/7_用VSCode调试Cpp代码.html">7 用VSCode调试Cpp代码</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/8_课程回顾.html">8 课程回顾</a></li><li class="chapter-item expanded affix "><a href="../vscode_cpp_macos/9_others.html">其他</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../postscript/support.html">Support</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../postscript/site_build.html">About</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../foreword/site_info.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../vscode_cpp_macos/0_about.html">Cpp in VSCode on macOS</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/1_前言和课程说明.html">1 前言和课程说明</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/2_认识mac的文件系统.html">2 认识mac的文件系统</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/3_认识程序.html">3 认识程序</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/4_认识终端和shell.html">4 认识终端和shell</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/5_开启VSCode的大门.html">5 开启VSCode的大门</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/6_VSCode代码运行自动化.html" class="active">6 VSCode代码运行自动化</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/7_用VSCode调试Cpp代码.html">7 用VSCode调试Cpp代码</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/8_课程回顾.html">8 课程回顾</a></li><li class="chapter-item expanded affix "><a href="../vscode_cpp_macos/9_others.html">其他</a></li><li class="chapter-item expanded affix ">极速版教程</li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../postscript/support.html">Support</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../postscript/site_build.html">About the Site</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -161,26 +161,26 @@
 </li>
 <li><a href="#%E6%9C%80%E5%90%8E%E8%AF%B4%E5%87%A0%E5%8F%A5">最后说几句</a></li>
 </ul>
-<p>这一节课我们要来让VSCode自动编译、运行我们的代码。说是自动，其实是用一个快捷键代替我们再终端重复敲命令的过程。接下来就让我们开始！</p>
+<p>这一节课我们要来让<code>VS Code</code>自动编译、运行我们的代码。说是自动，其实是用一个快捷键代替我们在终端重复敲命令的过程。接下来就让我们开始！</p>
 <h1><a class="header" href="#引入" id="引入">引入</a></h1>
 <p>回忆之前我们编译、运行代码的过程，大概是需要在集成终端输入：</p>
 <pre><code class="language-bash">g++ say_hi.cpp -o say_hi.out -W -Wall -O2 -std=c++17
 ./say_hi.out
 </code></pre>
-<p>这个，还挺长的，敲起来挺麻烦的。如何一键执行这两个代码呢？我们需要下载一个插件：Code Runner（简单查看Code Runner的说明；我已经将我们执行代码需要用的项摘了出来；在哪里设置这些选项呢？settings.json）</p>
+<p>这个，还挺长的，敲起来挺麻烦的。如何一键执行这两个代码呢？我们需要下载一个插件：<code>Code Runner</code>（简单查看<code>Code Runner</code>的说明；我已经将我们执行代码需要用的项摘了出来；在哪里设置这些选项呢？<code>settings.json</code>）</p>
 <h1><a class="header" href="#code-runner" id="code-runner">Code Runner</a></h1>
-<p>在settings.json中添加（注意json文件的格式）：</p>
+<p>在<code>settings.json</code>中添加（注意<code>json</code>文件的格式）：</p>
 <pre><code class="language-json">{
   // --------------------------------------------------------------------------------------
   // Code Runner
   // To run code:
-  //   use shortcut &quot;⌃ ⌥ N&quot; *
+  //   use shortcut &quot;Ctrl Opt N&quot; *
   //   or press F1 and then select/type Run Code,
   //   or right click the Text Editor and then click Run Code in editor context menu
   //   or click Run Code button in editor title menu
   //   or click Run Code button in context menu of file explorer
   // To stop the running code:
-  //   use shortcut &quot;⌃ ⌥ M&quot; *
+  //   use shortcut &quot;Ctrl Opt M&quot; *
   //   or press F1 and then select/type Stop Code Run
   //   or right click the Output Channel and then click Stop Code Run in context menu
   &quot;code-runner.executorMap&quot;: {
@@ -208,7 +208,7 @@
     //     $workspaceRoot\&quot;relative/path/xxxx.cpp\&quot;
     /* ------ 编译c文件 ------ */
     &quot;c&quot;: &quot;gcc $fullFileName -o $dir\&quot;$fileNameWithoutExt\&quot;\&quot;.out\&quot; -W -Wall -O2 -std=c17 &amp;&amp; $dir\&quot;$fileNameWithoutExt\&quot;\&quot;.out\&quot;&quot;,
-    // &quot;cpp&quot;: &quot;gcc $fullFileName &lt;file_to_link&gt; -o $dir\&quot;$fileNameWithoutExt\&quot;\&quot;.out\&quot; -W -Wall -O2 -std=c17 &amp;&amp; $dir\&quot;$fileNameWithoutExt\&quot;\&quot;.out\&quot;&quot;,
+    // &quot;c&quot;: &quot;gcc $fullFileName &lt;file_to_link&gt; -o $dir\&quot;$fileNameWithoutExt\&quot;\&quot;.out\&quot; -W -Wall -O2 -std=c17 &amp;&amp; $dir\&quot;$fileNameWithoutExt\&quot;\&quot;.out\&quot;&quot;,
   },
   // Whether to clear previous output before each run (default is false):
   &quot;code-runner.clearPreviousOutput&quot;: true,
@@ -227,6 +227,7 @@
   // --------------------------------------------------------------------------------------
   // 添加希望被忽略的文件,这样一些文件虽然存在于当前工作目录下,但是不会被显示在左侧的文件浏览器里
   &quot;files.exclude&quot;: {
+    // dSYM文件具有调试信息,普通使用的话不看到它就可以了
     &quot;**/*.dSYM&quot;: true,
     &quot;**/*.out&quot;: true,
   },
@@ -239,15 +240,15 @@
 <p>光标放在选项或选项设置处 ⌘I 以打开 IntellSense</p>
 <h2><a class="header" href="#设置快捷键" id="设置快捷键">设置快捷键</a></h2>
 <p>原本的快捷键太不顺手了</p>
-<p><img src="media/16104435266580/16107331462916.jpg" alt="-w1516" /></p>
+<img src="media/16104435266580/16107331462916.jpg" style="zoom:40%"/>
 <p>修改为：⌘R ⇧⌘R（搜索code run）</p>
 <h2><a class="header" href="#排除文件" id="排除文件">排除文件</a></h2>
-<p>（打开设置看一下）
-（说一下一个可执行文件也就几十K，而且还是覆盖写的，多出来的那些不管也可以；你要删的话打开访达按类型排⇧选中删就可以了；或者直接添加rm）</p>
+<p>（打开设置看一下）</p>
+<p>（说一下一个可执行文件也就几十K，而且还是覆盖写的，多出来的那些不管也可以；你要删的话打开访达按类型排序、然后⇧选中删掉就可以了；或者直接添加<code>rm</code>）</p>
 <h1><a class="header" href="#最后说几句" id="最后说几句">最后说几句</a></h1>
-<p>如果你不需要注释，那么就可以直接删除。还记得我在第一节课说的，网上的教程良莠不齐吗？一个很大的原因就是网上的教程没什么注释。作为一个初学者，第一次用VSCode，如果看到的配置文件没有注释，不知道这些插件从哪里来，不知道怎么看插件的使用说明书，也不知道命令怎么编写组合，那当然会看不懂网上的教程了。</p>
-<p>我做这份教程的初心就是，希望大家能真正从零开始，知道这些配置的来源，能够自己搭建自己喜欢的编程环境。到了这节课大家其实已经能感觉到，编译、运行并不是什么复杂的事情，借助VSCode的Code Runner插件，结合自己前几节课所学的命令行，再加上VSCode的个性化配置，你已经可以做到这件事情了。</p>
-<p>但其实还有一件事情需要去做。我们发现，Code Runner这个插件只能去运行代码，但是不能调试代码。如果我在代码的某一行打上断点，希望程序运行到这里停下来，你发现Code Runner无法做到这件事情。这就是我们下节课要学习的东西：用VSCode调试Cpp代码。</p>
+<p>如果你不需要注释，那么就可以直接删除。还记得我在第一节课说的，网上的教程良莠不齐吗？一个很大的原因就是网上的教程没什么注释。作为一个初学者，第一次用<code>VS Code</code>，如果看到的配置文件没有注释，不知道这些插件从哪里来，不知道怎么看插件的使用说明书，也不知道命令怎么编写组合，那当然会看不懂网上的教程了。</p>
+<p>我做这份教程的初心就是，希望大家能真正从零开始，知道这些配置的来源，能够自己搭建自己喜欢的编程环境。到了这节课大家其实已经能感觉到，编译、运行并不是什么复杂的事情，借助<code>VS Code</code>的<code>Code Runner</code>插件，结合自己前几节课所学的命令行，再加上<code>VS Code</code>的个性化配置，你已经可以做到这件事情了。</p>
+<p>但其实还有一件事情需要去做。我们发现，<code>Code Runner</code>这个插件只能去运行代码，但是不能调试代码。如果我在代码的某一行打上断点，希望程序运行到这里停下来，你发现<code>Code Runner</code>无法做到这件事情。这就是我们下节课要学习的东西：用<code>VS Code</code>调试<code>Cpp</code>代码。</p>
 <p>不出意外的话，下节课应该是最后一节课了！大家加油！</p>
 
                     </main>
