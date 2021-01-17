@@ -191,7 +191,7 @@
 <li><a href="#%E6%80%BB%E7%BB%93-1">总结</a></li>
 </ul>
 <h1><a class="header" href="#前言" id="前言">前言</a></h1>
-<p>调试是什么，就是<code>debug</code>（查看<code>Run -&gt; Start Debugging</code>）。<code>debug</code>是什么：你在写代码的时候会有一些地方写的有问题，这些问题就被称作bug。bug原意为虫子。<code>de-</code>前缀有去除的意思，<code>debug</code>就是指“去掉虫子”，也就是找代码中的错并改正。仔细看<code>VS Code</code>边栏的运行图标，发现就有一只虫子。</p>
+<p>调试是什么，就是<code>debug</code>（查看<code>Run -&gt; Start Debugging</code>）。<code>debug</code>是什么：你在写代码的时候会有一些地方写的有问题，这些问题就被称作<code>bug</code>。<code>bug</code>原意为虫子。<code>de-</code>前缀有去除的意思，<code>debug</code>就是指“去掉虫子”，也就是找代码中的错并改正。仔细看<code>VS Code</code>边栏的运行图标，发现就有一只虫子。</p>
 <p>至于为什么<code>debug</code>被翻译为调试呢？大概就是说，你调一调（调整）代码，试着改一改代码，就把错误找出来了。</p>
 <p>这一课会大量参考<code>VS Code</code>的官方文档，这是因为一份配置文件怎么写，不会有什么教程比官方文档写得更清楚了。是的，包括我现在正在录制的这一课的教程。我推荐你直接看官方的文档；不过，我还是有那么一丢丢自信比官网文档总结的好那么一点点。所以，你可以先听我讲的，如果觉得我哪里讲得不好，你可以移步官方文档查看对应的部分。</p>
 <p>首先先简单看一看这些文档吧。</p>
@@ -314,7 +314,7 @@
 }
 </code></pre>
 <h2><a class="header" href="#从上到下讲" id="从上到下讲">从上到下讲……</a></h2>
-<p>（最后的一点先留着，讲到debug的时候出问题再回来）</p>
+<p>（打开终端的task先留着，讲到<code>debug</code>的时候出问题再回来）</p>
 <h2><a class="header" href="#other-two-choices" id="other-two-choices">Other two choices</a></h2>
 <img src="media/16104430276312/16107072035683.jpg" style="zoom:30%"/>
 <h2><a class="header" href="#总结" id="总结">总结</a></h2>
@@ -376,7 +376,7 @@ int main() { printf(&quot;\n\nHello, world!\n\n&quot;); }
 </code></pre>
 <p>直接<code>F5</code>开始调试（可能需要在边栏Run哪里勾选）</p>
 <p>你会发现出现问题，终端没有<code>Hello, world!</code>。这是什么原因呢？？？</p>
-<p><a href="https://github.com/microsoft/vscode-cpptools/issues/5079">GitHub issue｜VS Code因权限无法打开系统终端</a>（大概1/2的地方）</p>
+<p><a href="https://github.com/microsoft/vscode-cpptools/issues/5079">GitHub issue｜VS Code因权限无法打开系统终端</a>（大概<code>1/2</code>的地方）</p>
 <img src="media/16104430276312/16107361192670.jpg" style="zoom:30%"/>
 <p>回到<code>tasks.json</code> ⇧⌘P执行，给<code>VS Code</code>打开终端的权限，解决问题</p>
 <h2><a class="header" href="#调整终端和vs-code的位置" id="调整终端和vs-code的位置">调整终端和VS Code的位置</a></h2>
@@ -387,7 +387,7 @@ int main() { printf(&quot;\n\nHello, world!\n\n&quot;); }
 <p>你肯定觉得这么做很麻烦，<code>Code Runner</code>都可以让提示信息出现在集成终端，那我调试代码也把程序的输出放到集成终端可以吗？很遗憾，这件事情在<code>macOS</code>上做不到。</p>
 <p>当时<code>GitHub issues</code>上也有人问过这件事情。</p>
 <p><a href="https://github.com/microsoft/vscode-cpptools/issues/3338">GitHub｜issue: Open the externalConsole inside the VSCode Terminal in OSX</a></p>
-<p>（查看我的回答；图片会挂是因为GitHub的服务器在国外……）非常遗憾，也许之后能支持，但是现在<strong>not available</strong>。（真的很可惜）</p>
+<p>（查看我的回答；图片会挂是因为<code>GitHub</code>的服务器在国外……）非常遗憾，也许之后能支持，但是现在<strong>not available</strong>。（真的很可惜）</p>
 <p><a href="https://code.visualstudio.com/docs/cpp/launch-json-reference#_externalconsole">VS Code官方文档｜Configuring C/C++ debugging之externalConsole</a></p>
 <img src="media/16013676677088/16015722057456.jpg" style="zoom:30%"/>
 <h2><a class="header" href="#调试举例" id="调试举例">调试举例</a></h2>

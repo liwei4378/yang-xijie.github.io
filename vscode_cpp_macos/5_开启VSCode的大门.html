@@ -197,7 +197,7 @@
 <li><a href="#%E5%85%A8%E5%B1%80%E7%94%A8%E6%88%B7%E8%AE%BE%E7%BD%AE%E5%92%8C%E5%B7%A5%E4%BD%9C%E5%8C%BA%E8%AE%BE%E7%BD%AE">全局/用户设置和工作区设置</a></li>
 <li><a href="#%E4%BD%BF%E7%94%A8%E5%B7%A5%E4%BD%9C%E5%8C%BA%E8%AE%BE%E7%BD%AE%E7%9A%84%E4%BC%98%E7%82%B9">使用工作区设置的优点</a></li>
 <li><a href="#%E4%BD%BF%E7%94%A8%E5%B7%A5%E4%BD%9C%E5%8C%BA%E8%AE%BE%E7%BD%AE%E6%96%87%E4%BB%B6%E5%8F%8A%E5%85%B6%E4%BC%98%E7%82%B9">使用工作区设置文件及其优点</a></li>
-<li><a href="#%E5%B0%86%E4%B9%8B%E5%89%8D%E7%9A%84%E5%85%A8%E5%B1%80%E8%AE%BE%E7%BD%AE%E9%83%BD%E6%9B%B4%E6%94%B9%E4%B8%BA%E5%B7%A5%E4%BD%9C%E5%8C%BA%E8%AE%BE%E7%BD%AE">将之前的全局设置都更改为工作区设置</a></li>
+<li><a href="#%E4%BF%AE%E6%94%B9%E4%B9%8B%E5%89%8D%E7%9A%84%E5%85%A8%E5%B1%80%E8%AE%BE%E7%BD%AE%E4%B8%BA%E5%B7%A5%E4%BD%9C%E5%8C%BA%E8%AE%BE%E7%BD%AE">修改之前的全局设置为工作区设置</a></li>
 <li><a href="#%E5%85%A8%E5%B1%80%E8%AE%BE%E7%BD%AEjson%E6%96%87%E4%BB%B6">全局设置json文件</a></li>
 </ul>
 </li>
@@ -427,7 +427,7 @@ g++ &lt;filename&gt;.cpp &lt;other_cpp_files&gt; -o &lt;filename&gt;.out -W -Wal
 <li>除了默认的设置、被更改的设置都明明白白的被列举了出来</li>
 <li>多人协同的时候大家都可以使用一样的配置</li>
 </ol>
-<h3><a class="header" href="#将之前的全局设置都更改为工作区设置" id="将之前的全局设置都更改为工作区设置">将之前的全局设置都更改为工作区设置</a></h3>
+<h3><a class="header" href="#修改之前的全局设置为工作区设置" id="修改之前的全局设置为工作区设置">修改之前的全局设置为工作区设置</a></h3>
 <p>设置右上角的三个点，查看已经被修改的全局设置（或者搜索时输入<code>@modified</code>，相当于条件筛选）；可以分别看到被修改的全局/用户设置和工作区设置</p>
 <img src="media/16104429789963/16106093332062.jpg" style="zoom:50%"/>
 <p>将代码格式化的选项更改为工作区设置。</p>
@@ -445,7 +445,6 @@ cat settings.json
 <p>注意一定要这么写。因为路径中含有空格，空格需要用引号包裹起来；同时还含有家目录<code>~</code>所以不能把<code>~</code>放在双引号里面，否则shell无法解析（一般我们命令文件和文件夹就不要用空格了）</p>
 <img src="media/16104429789963/16106146969568.jpg" style="zoom:30%"/>
 <p>这里的<code>settings.json</code>就是你的用户设置/全局配置存储的地方</p>
-<p>（发现里面还没什么东西，因为我们刚刚把所有的全局设置都改成了工作区设置）</p>
 <h1><a class="header" href="#修改快捷键" id="修改快捷键">修改快捷键</a></h1>
 <p>（按照自己的喜好修改就行，没必要和我的一模一样）但我介绍的这几个我觉得还是挺常用的</p>
 <h2><a class="header" href="#新建" id="新建">新建</a></h2>
