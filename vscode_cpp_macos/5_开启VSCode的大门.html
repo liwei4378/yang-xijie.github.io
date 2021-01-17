@@ -247,21 +247,21 @@ int main(){
 </code></pre>
 <p>接下来是把代码文件编译成二进制可执行文件。</p>
 <h2><a class="header" href="#g编译" id="g编译">g++编译</a></h2>
-<p>用什么来编译代码呢？当然是用程序了。<code>/bin/date</code>可以显示当前的时间，<code>/bin/mkdir</code>可以创建一个新的空文件夹；那什么程序能将cpp代码编译为我们想要的二进制可执行文件/程序呢？</p>
+<p>用什么来编译代码呢？当然是用程序了。<code>/bin/date</code>可以显示当前的时间，<code>/bin/mkdir</code>可以创建一个新的空文件夹；那什么程序能将<code>cpp</code>代码编译为我们想要的二进制可执行文件/程序呢？</p>
 <p><code>g++</code>。是的，这个程序的名字就是<code>g++</code>，它的功能是：将<code>cpp</code>代码编译为二进制可执行文件。</p>
 <p>注：不过刚刚一直在说编译，什么是编译？<strong>简单来说</strong>，你写的后缀为<code>.cpp</code>的文件是文本文件，里面可能还引用了一些头文件（也是代码文件、文本文件）；编译就是将这些东西链接起来，转换为一堆机器码使得电脑硬件可以直接执行。（注：这里说的编译严格一些应该指编译链接；更严格的过程放在本课最后了）</p>
 <p>注：如果对编译器不感兴趣，你只需要知道：<code>g++</code>将cpp代码编译为二进制可执行文件 这点就够了。如果你感兴趣，可以看一下这节课讲稿最后的补充资料。</p>
 <h2><a class="header" href="#下载必要的命令行工具" id="下载必要的命令行工具">下载必要的命令行工具</a></h2>
 <p>那么在哪里下载<code>g++</code>这个程序呢？</p>
-<p>苹果的开发集成工具是<code>Xcode.app</code>，其中就带着一堆的命令行工具，那么我们可以直接在App Store下载Xcode。不过你打开一看，12G！！太大了吧。如果你不从事苹果平台的软件开发，只是为了一个<code>g++</code>（可能也就1、2MB）下载Xcode这么大的东西占电脑的存储空间，实在划不来。那怎么办呢？</p>
-<p>（直接在App Store下载Xcode）
-<img src="media/16104429789963/16104689069722.jpg" style="zoom:30%"/></p>
-<p>苹果也考虑了这种情况，所以在苹果官方开发者的网站上会有单独的命令行工具的下载。这个大小只有大概400MB，还算比较小（不过其实装好需要2.5G左右的空间，这个确实无法避免啦）</p>
+<p>苹果的开发集成工具是<code>Xcode.app</code>，其中就带着一堆的命令行工具，那么我们可以直接在<code>App Store</code>下载<code>Xcode.app</code>。不过你打开一看，12G！！太大了吧。如果你不从事苹果平台的软件开发，只是为了一个<code>g++</code>（可能也就1、2MB）下载<code>Xcode</code>这么大的东西占电脑的存储空间，实在划不来。那怎么办呢？</p>
+<p>（直接在<code>App Store</code>下载<code>Xcode</code>）</p>
+<img src="media/16104429789963/16104689069722.jpg" style="zoom:30%"/>
+<p>苹果也考虑了这种情况，所以在苹果官方开发者的网站上会有单独的命令行工具的下载。这个大小只有大概<code>400MB</code>，还算比较小（不过其实装好需要2.5G左右的空间，这个确实无法避免啦）</p>
 <p><a href="https://developer.apple.com/download/more/">在苹果开发者网站下载Command Line Tool</a></p>
 <img src="media/16104429789963/16104688869815.jpg" style="zoom:30%"/>
-<p>注：其实也可以先尝试<code>g++ --version</code>，然后终端弹出提示说要下载<code>g++</code>。但是由于网络原因，我推荐大家直接安装Command Line Tool，之后在调试Cpp代码的时候也会用到。（在你使用MATLAB的时候也会需要安装Command Line Tool哦，所以现在就装了吧）</p>
+<p>注：其实也可以先尝试<code>g++ --version</code>，然后终端弹出提示说要下载<code>g++</code>。但是由于网络原因，我推荐大家直接安装<code>Command Line Tools</code>，之后在调试<code>Cpp</code>代码的时候也会用到。（在你使用<code>MATLAB</code>的时候也会需要安装<code>Command Line Tools</code>哦，所以现在就装了吧）</p>
 <h2><a class="header" href="#第一次编译和执行" id="第一次编译和执行">第一次编译和执行</a></h2>
-<p>安装好后，我们直接编译就好了。可以先执行<code>which g++</code>看看shell怎么解析这条命令，发现返回了一个路径<code>/usr/bin/g++</code>，也就是说，虽然<code>g++</code>这个程序在<code>/usr/bin/g++</code>，但你用一个单词/命令告诉终端终端就会知道你要执行的程序在这里（与环境变量相关，<code>/usr/bin</code>在环境变量中）</p>
+<p>安装好后，我们直接编译就好了。可以先执行<code>which g++</code>看看<code>shell</code>怎么解析这条命令，发现返回了一个路径<code>/usr/bin/g++</code>，也就是说，虽然<code>g++</code>这个程序在<code>/usr/bin/g++</code>，但你用一个单词/命令告诉终端终端就会知道你要执行的程序在这里（与环境变量相关，<code>/usr/bin</code>在环境变量中）</p>
 <p>编译：执行：</p>
 <pre><code class="language-bash">g++ hello_word.cpp
 </code></pre>
@@ -291,13 +291,13 @@ Hello, yxj%
 ./hello
 </code></pre>
 <img src="media/16104429789963/16106034005033.jpg" style="zoom:50%"/>
-<p>观察图标，发现系统觉得<code>hello</code>是二进制文件，但是<code>hello.out</code>不是。这就要说到我们之前提到的文件后缀名的事情了。文件的后缀名是文件名的一部分，可有可无，但这个后缀名会告诉系统它用什么应用程序去打开这个文件。双击<code>hello</code>发现系统打开了终端，但是双击<code>hello.out</code>发现系统并不知道怎么打开这个文件（其实这个<code>.out</code>相当于windows里面的可执行文件<code>.exe</code>）</p>
-<p>大家用Cpp代码生成可执行文件的时候，文件名带不带后缀都可以（不带是因为macOS中二进制可执行文件本身就不带后缀）。如果要带，你就用默认的<code>.out</code>，别用别的（举例：你改成exe后缀，用<code>./hello.exe</code>的话，shell也会把这个文件当作二进制可执行文件，但毕竟<code>.exe</code>是Windows系统的可执行文件的后缀，这么用之后可能会造成混淆，所以就用默认的）。</p>
-<p>我们在后面对于用<code>g++</code>编译生成的可执行文件都会带上<code>.out</code>后缀，到后面使用VSCode的时候你就知道原因了。推荐大家也将Cpp代码编译出的二进制文件带上<code>.out</code>后缀</p>
+<p>观察图标，发现系统觉得<code>hello</code>是二进制文件，但是<code>hello.out</code>不是。这就要说到我们之前提到的文件后缀名的事情了。文件的后缀名是文件名的一部分，可有可无，但这个后缀名会告诉系统它用什么应用程序去打开这个文件。双击<code>hello</code>发现系统打开了终端，但是双击<code>hello.out</code>发现系统并不知道怎么打开这个文件（其实这个<code>.out</code>相当于<code>Windows</code>里面的可执行文件<code>.exe</code>）</p>
+<p>大家用<code>Cpp</code>代码生成可执行文件的时候，文件名带不带后缀都可以（不带是因为<code>macOS</code>中二进制可执行文件本身就不带后缀）。如果要带，你就用默认的<code>.out</code>，别用别的（举例：你改成<code>exe</code>后缀，用<code>./hello.exe</code>的话，shell也会把这个文件当作二进制可执行文件，但毕竟<code>.exe</code>是<code>Windows</code>系统的可执行文件的后缀，这么用之后可能会造成混淆，所以就用默认的）。</p>
+<p>我们在后面对于用<code>g++</code>编译生成的可执行文件都会带上<code>.out</code>后缀，到后面使用<code>VS Code</code>的时候你就知道原因了。推荐大家也将<code>Cpp</code>代码编译出的二进制文件带上<code>.out</code>后缀</p>
 <p>这里关于后缀名说的比较多，是因为我发现很多同学都不知道后缀名的含义，总是有同学问我能不能在macOS上直接打开<code>.exe</code>的程序，当然不行，数据的组织方式不一样，两个文件的性质就不一样。能不能直接把<code>.docx</code>后缀的文件直接改成<code>.pdf</code>转成<code>pdf</code>，后缀名决定了系统用什么应用程序打开文件，你改后缀的话只会让另一个应用程序打不开原本的文件；正确的做法是用专门的应用程序去转换文件内部的数据组织方式，而不是直接更改后缀。</p>
 <h2><a class="header" href="#吐槽不爽的地方" id="吐槽不爽的地方">吐槽不爽的地方</a></h2>
 <p>第一次写代码编译就结束了，大概是：打开终端，写代码，<code>g++</code>编译。整个过程还算简单。</p>
-<p>但是有可以吐槽的地方。比如文本编辑器会自动给我大写、文本编辑器没有高亮显示，写代码就真的只是黑白的太难看了、而且我需要不断在终端和文本编辑之间来回切换，这体验确实有点不爽啊。vim的更改保存退出这么复杂……有没有优雅一点的方式呢？？？当然…有！</p>
+<p>但是有可以吐槽的地方。比如文本编辑器会自动给我大写、文本编辑器没有高亮显示，写代码就真的只是黑白的太难看了、而且我需要不断在终端和文本编辑之间来回切换，这体验确实有点不爽啊。<code>vim</code>的更改保存退出这么复杂……有没有优雅一点的方式呢？？？当然…有！</p>
 <h1><a class="header" href="#认识vs-code" id="认识vs-code">认识VS Code</a></h1>
 <p>那我们就要引出本次教程的主角<code>VS Code</code>了，全名是<code>Visual Studio Code.app</code>。我们在<a href="https://code.visualstudio.com">微软VSCode官网</a>直接下载macOS平台的最新版本即可（百度搜索第一条就是）</p>
 <img src="media/16104429789963/16104690830317.jpg" style="zoom:20%"/>
@@ -387,8 +387,8 @@ int fourSum(int a, int b, int c, int d);
 <p>（注：如果大家链接的文件不多，那么开了优化和没开优化相比不会多花很多时间；如果大家的代码没有那么长，那其实开不开优化执行时间也不会相差很多。自己去运行程序，开不开优化都无所谓；但是如果你要把可执行文件发给别人用，那还是开<code>O2</code>优化比较好；在大家之后可能会做的<code>Online Judge</code>，就是上传自己写的代码让服务器判断运行内存和时间，的时候，服务器的编译选项基本都是开<code>O2</code>优化。所以我们就开<code>O2</code>优化就行）</p>
 <h2><a class="header" href="#调试选项" id="调试选项">调试选项</a></h2>
 <p>编译型语言和解释型语言：解释型语言一行一行执行，但编译型语言不是，在真正的二进制文件中，执行顺序可能与你所写的代码相差很多。（编译型语言的优势是：执行大概比解释型语言快100倍。）</p>
-<p>由于<code>C++</code>是编译型语言，如果你直接编译成可执行文件，那大概是没有希望让调试器（就是用来debug的东西；debug就是查错，看自己写的代码哪里写错了）一行一行过你的代码，因为可执行文件已经和你写的代码有着巨大差距了。因此我们需要添加一个编译选项，让编译得到的可执行文件尽量不要被优化，臃肿一些但附加一些调试信息，让得到的可执行文件尽量接近你写的代码。添加<code>-g</code>参数就可以了。</p>
-<p>如果你听说过<code>debug版本</code>和<code>release版本</code>，比如你要查错就用debug版本的可执行文件，要把程序发不出去给别人用就用release版本（体积更小；执行更高效）：这本质上就是编译时有没有<code>-g</code>这一个参数。</p>
+<p>由于<code>C++</code>是编译型语言，如果你直接编译成可执行文件，那大概是没有希望让调试器（就是用来<code>debug</code>的东西；<code>debug</code>就是查错，看自己写的代码哪里写错了）一行一行过你的代码，因为可执行文件已经和你写的代码有着巨大差距了。因此我们需要添加一个编译选项，让编译得到的可执行文件尽量不要被优化，臃肿一些但附加一些调试信息，让得到的可执行文件尽量接近你写的代码。添加<code>-g</code>参数就可以了。</p>
+<p>如果你听说过<code>debug版本</code>和<code>release版本</code>，比如你要查错就用<code>debug版本</code>的可执行文件，要把程序发不出去给别人用就用<code>release版本</code>（体积更小；执行更高效）：这本质上就是编译时有没有<code>-g</code>这一个参数。</p>
 <p>感兴趣的话可以阅读<a href="https://blog.csdn.net/zhangsmlyl/article/details/78941158">CSDN｜gcc的-g选项做了哪些操作</a></p>
 <h2><a class="header" href="#最终结果" id="最终结果">最终结果</a></h2>
 <p><code>release</code>：</p>
@@ -401,7 +401,7 @@ g++ &lt;filename&gt;.cpp &lt;other_cpp_files&gt; -o &lt;filename&gt;.out -W -Wal
 </code></pre>
 <h1><a class="header" href="#vs-code简单的文本编辑技巧" id="vs-code简单的文本编辑技巧">VS Code简单的文本编辑技巧</a></h1>
 <p>添加注释：⌘/  ⌥⇧A</p>
-<p>代码提示：code snippet ⇥ 和 ⌘I（I refers to IntelliSense）</p>
+<p>代码提示：<code>code snippet</code> ⇥ 和 ⌘I（<code>I</code> refers to <code>IntelliSense</code>）</p>
 <p>双击选中一个词，三击选中一行</p>
 <p>⌥左右 和 ⌘上下左右；⇧光标区域选中；⇧上下左右 和 ⇧⌥左右 和 ⌘⇧上下左右</p>
 <p>⌥⌫、⌘⌫；fn⌫</p>
@@ -409,9 +409,9 @@ g++ &lt;filename&gt;.cpp &lt;other_cpp_files&gt; -o &lt;filename&gt;.out -W -Wal
 <p>⌥点击多处添加多个光标</p>
 <h1><a class="header" href="#代码格式化引入settingsjson" id="代码格式化引入settingsjson">代码格式化引入settings.json</a></h1>
 <h2><a class="header" href="#代码格式化风格选择" id="代码格式化风格选择">代码格式化风格选择</a></h2>
-<p>打开设置搜索<code>format google</code>（注：空格隔开搜索关键词），改成我喜欢的<code>Google</code>开源<code>C++</code>代码的格式化风格。
-<img src="media/16104429789963/16106086360629.jpg" alt="-w946" />
-（注：想改什么设置搜索什么单词。eg：font tab window theme）</p>
+<p>打开设置搜索<code>format google</code>（注：空格隔开搜索关键词），改成我喜欢的<code>Google</code>开源<code>C++</code>代码的格式化风格。</p>
+<img src="media/16104429789963/16106086360629.jpg" style="zoom:50%"/>
+<p>（注：想改什么设置搜索什么单词。eg：<code>font</code> <code>tab</code> <code>window</code> <code>theme）</code></p>
 <h2><a class="header" href="#全局设置与工作区设置" id="全局设置与工作区设置">全局设置与工作区设置</a></h2>
 <h3><a class="header" href="#什么是工作区" id="什么是工作区">什么是工作区</a></h3>
 <p>在<code>VS Code</code>中一个文件夹就是一个工作区（开始创建的那个桌面上的<code>Cpp</code>文件夹）；在<code>VS Code</code>中，一个文件夹约等于一个项目（<code>Cpp</code>这个文件夹就是供我们学习<code>Cpp</code>使用的项目）。</p>
@@ -442,7 +442,7 @@ g++ &lt;filename&gt;.cpp &lt;other_cpp_files&gt; -o &lt;filename&gt;.out -W -Wal
 ls
 cat settings.json
 </code></pre>
-<p>注意一定要这么写。因为路径中含有空格，空格需要用引号包裹起来；同时还含有家目录<code>~</code>所以不能把<code>~</code>放在双引号里面，否则shell无法解析（一般我们命令文件和文件夹就不要用空格了）</p>
+<p>注意一定要这么写。因为路径中含有空格，空格需要用引号包裹起来；同时还含有家目录<code>~</code>所以不能把<code>~</code>放在双引号里面，否则<code>shell</code>无法解析（一般我们命令文件和文件夹就不要用空格了）</p>
 <img src="media/16104429789963/16106146969568.jpg" style="zoom:30%"/>
 <p>这里的<code>settings.json</code>就是你的用户设置/全局配置存储的地方</p>
 <h1><a class="header" href="#修改快捷键" id="修改快捷键">修改快捷键</a></h1>
@@ -452,7 +452,7 @@ cat settings.json
 <p>在<code>File</code>菜单下，第一个就是新建文件，快捷键是⌘N。但是尝试之后发现不符合我们的认知。（新建文件是经常用到的操作，我们就别总是用鼠标点了，快捷键一键直达）</p>
 <p>对快捷键进行修改，发现新建文件之后可以直接对名字进行修改。</p>
 <h4><a class="header" href="#新建文件夹" id="新建文件夹">新建文件夹</a></h4>
-<p>（和访达类似）访达中新建文件夹是⇧⌘N，但是这个快捷键在vscode却是新开一个窗口。改！</p>
+<p>（和访达类似）访达中新建文件夹是⇧⌘N，但是这个快捷键在<code>VS Code</code>却是新开一个窗口。改！</p>
 <h4><a class="header" href="#新建窗口" id="新建窗口">新建窗口</a></h4>
 <p>发现有一个冲突了。那我们之后新建窗口怎么办啊（比如我做网站开发，前端一个窗口，后端一个或者我要“借鉴”别人的代码；怎么新建窗口呢？）。鼠标点菜单栏；或者我们再设置一个快捷键。</p>
 <h4><a class="header" href="#附" id="附">附</a></h4>
@@ -467,7 +467,7 @@ cat settings.json
 <p>⌃⇥</p>
 <p>⇧⌘[</p>
 <p>⇧⌘]</p>
-<p>（以Safari为参照设计）</p>
+<p>（以<code>Safari</code>为参照设计）</p>
 <h4><a class="header" href="#发现问题并修改" id="发现问题并修改">发现问题并修改</a></h4>
 <p>发现中文输入法的状态下无法切换相邻的窗口</p>
 <p>解决：</p>
@@ -485,7 +485,7 @@ cat settings.json
 <p>自己定义快捷键的话，你觉得哪些操作经常用，经常需要用鼠标点击，那就设置一个快捷键吧。</p>
 <img src="media/16023312664337/16106188962437.jpg" style="zoom:50%"/>
 <p>里面的那个<code>Run Code</code>是什么呢？是不是可以用快捷键执行代码呢？是不是就不需要终端敲命令呢？是的。这就要引出我们下一节课要讲的插件：<code>Code Runner</code>。它能够让你省去在终端敲命令的麻烦。</p>
-<p>（ps 其实还有一种设置快捷键的方法（简单演示<code>Keyboard Shortcuts [⌘K ⌘S]</code>，⌃⌘space搜索<code>interest</code>），在三个月之前我试讲这一课的时候，确实有必要这样设置一次快捷键，因为<code>VS Code</code>没有给设置绑定快捷键。但是新的版本修了这个bug，所以我就只是简单提一下大家知道这样能给在菜单栏出现的操作添加快捷键就ok了）</p>
+<p>（<strong>ps</strong> 其实还有一种设置快捷键的方法（简单演示<code>Keyboard Shortcuts [⌘K ⌘S]</code>，⌃⌘space搜索<code>interest</code>），在三个月之前我试讲这一课的时候，确实有必要这样设置一次快捷键，因为<code>VS Code</code>没有给设置绑定快捷键。但是新的版本修了这个<code>bug</code>，所以我就只是简单提一下大家知道这样能给在菜单栏出现的操作添加快捷键就ok了）</p>
 <img src="media/16104429789963/16107764019820.jpg" style="zoom:35%"/>
 <img src="media/16104429789963/16107764681084.jpg" style="zoom:37%"/>
 <p>但是一般来说所有设置在<code>VS Code</code>里面都有，所以直接在搜索就好了</p>

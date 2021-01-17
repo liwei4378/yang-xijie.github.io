@@ -228,15 +228,15 @@
 </ul>
 <p>上节课我们已经打开了终端。这节课我们要深入认识终端。</p>
 <p>先简单回顾一下：</p>
-<p>终端提供的是一个输入命令（字符串）和输出提示（字符串）的环境，而shell则负责解析从终端输入的命令。</p>
+<p>终端提供的是一个输入命令（字符串）和输出提示（字符串）的环境，而<code>shell</code>则负责解析从终端输入的命令。</p>
 <h2><a class="header" href="#内建程序与内建命令" id="内建程序与内建命令">内建程序与内建命令</a></h2>
-<p>我们打开终端，这时其实相当于打开了shell。上节课我们通过shell运行了一些程序（say_hello /bin/date /bin/mkdir）。其实shell自身也带着一些程序（二进制可执行文件），这些程序就叫内建程序。</p>
-<p>shell内建程序的独特之处是，我们在调用这些程序的时候只需要敲一个单词就行了。<strong>一个单词</strong>，<strong>很短</strong>，所以我们就把它们称作内建命令。</p>
+<p>我们打开终端，这时其实相当于打开了<code>shell</code>。上节课我们通过<code>shell</code>运行了一些程序（<code>say_hello</code> <code>/bin/date</code> <code>/bin/mkdir</code>）。其实<code>shell</code>自身也带着一些程序（二进制可执行文件），这些程序就叫内建程序。</p>
+<p><code>shell</code>内建程序的独特之处是，我们在调用这些程序的时候只需要敲一个单词就行了。<strong>一个单词</strong>，<strong>很短</strong>，所以我们就把它们称作内建命令。</p>
 <p>顺带一提，系统自带的那些程序如果也能用一个单词就调用那么也可以称它们为系统命令。</p>
 <p>内建命令有很多，我们只介绍一些比较重要的：<code>which</code> <code>echo</code> <code>history</code> <code>pwd</code> <code>cd</code></p>
 <h2><a class="header" href="#与路径无关" id="与路径无关">与路径无关</a></h2>
 <h3><a class="header" href="#which" id="which">which</a></h3>
-<p>查看shell如何解释后面的命令</p>
+<p>查看<code>shell</code>如何解释后面的命令</p>
 <pre><code class="language-bash">which which
 which echo
 which history
@@ -249,22 +249,22 @@ which cd
 <pre><code class="language-bash">echo hello
 echo $SHELL
 </code></pre>
-<p>查看正在使用的shell <code>echo $SHELL</code>。其实还有好多其他的shell，但是我们用macOS默认的shell——zsh就好了。（小知识：在10.15Catalina之前macOS默认的shell是bash，其实二者的区别并不大，都可以解析你输入的命令）</p>
+<p>查看正在使用的<code>shell</code> <code>echo $SHELL</code>。其实还有好多其他的<code>shell</code>，但是我们用<code>macOS</code>默认的<code>shell</code>——<code>zsh</code>就好了。（小知识：在macOS 10.15 <code>Catalina</code>之前<code>macOS</code>默认的<code>shell</code>是<code>bash</code>，其实二者的区别并不大，都可以解析你输入的命令）</p>
 <h3><a class="header" href="#history" id="history">history</a></h3>
 <pre><code class="language-bash">history
 history -5
 </code></pre>
 <h3><a class="header" href="#date" id="date">date</a></h3>
 <p>接下来我们尝试一下<code>which date</code>。</p>
-<p>发现shell返回了<code>/bin/date</code>！回顾which的作用，which会查看后面输入的东西作为命令如何被shell解析。也就是说，如果你在shell输入<code>date</code>，相当于输入<code>/bin/date</code>。那么我们要看时间怎么看啊，直接输入<code>date</code>，shell就会帮我解析这个单词，然后去调用在文件系统中的<code>/bin/date</code>这一个二进制程序，执行这个程序，然后返回当前的时间。</p>
+<p>发现<code>shell</code>返回了<code>/bin/date</code>！回顾<code>which</code>的作用，<code>which</code>会查看后面输入的东西作为命令如何被<code>shell</code>解析。也就是说，如果你在<code>shell</code>输入<code>date</code>，相当于输入<code>/bin/date</code>。那么我们要看时间怎么看啊，直接输入<code>date</code>，<code>shell</code>就会帮我解析这个单词，然后去调用在文件系统中的<code>/bin/date</code>这一个二进制程序，执行这个程序，然后返回当前的时间。</p>
 <p>然后我们灵光一现，那是不是很多系统命令都可以用一个单词调用呢？</p>
 <p>是这样的，我举一个例子。<code>which mkdir</code>，发现也是返回我们之前用的<code>/bin/mkdir</code>。那么我们以后用mkdir的时候是不是就不用写路径了，直接写单词就OK。</p>
 <h3><a class="header" href="#说明" id="说明">说明</a></h3>
-<p>既然不论是内建命令还是系统命令，都可以用一个单词替代，那么我们之后就不要太区分它们啦，反正都是命令，都是用一个单词告诉shell要调用哪个程序，本质上是一样的。</p>
-<p>注：为什么会这样呢？调用程序写完整路径可以调用，但是一个单词给shell shell就能知道这个程序在哪里？好奇怪啊。原因我会在这节课的最后讲环境变量的时候提及。现在先认为这就是shell的功能好了。</p>
+<p>既然不论是内建命令还是系统命令，都可以用一个单词替代，那么我们之后就不要太区分它们啦，反正都是命令，都是用一个单词告诉<code>shell</code>要调用哪个程序，本质上是一样的。</p>
+<p>注：为什么会这样呢？调用程序写完整路径可以调用，但是一个单词给<code>shell</code>、<code>shell</code>就能知道这个程序在哪里？好奇怪啊。原因我会在这节课的最后讲环境变量的时候提及。现在先认为这就是<code>shell</code>的功能好了。</p>
 <h2><a class="header" href="#与shell当前工作目录相关" id="与shell当前工作目录相关">与shell当前工作目录相关</a></h2>
-<p>刚刚我们讲内建命令的时候还说了两个命令，<code>pwd</code>和<code>cd</code>。但是刚刚插着讲了shell的一些常用命令于是就跳过了。接下来我们来讲这些命令。</p>
-<p>接下来讲的命令的一些不同是命令的输入和执行或多或少会依赖shell的当前工作目录，与文件的路径相关。</p>
+<p>刚刚我们讲内建命令的时候还说了两个命令，<code>pwd</code>和<code>cd</code>。但是刚刚插着讲了<code>shell</code>的一些常用命令于是就跳过了。接下来我们来讲这些命令。</p>
+<p>接下来讲的命令的一些不同是命令的输入和执行或多或少会依赖<code>shell</code>的当前工作目录，与文件的路径相关。</p>
 <h3><a class="header" href="#pwd" id="pwd">pwd</a></h3>
 <p>接下来开始介绍文件路径——绝对路径和相对路径</p>
 <p>我们之前所说的路径都是绝对路径，也就是从根目录开始。但其实还有相对路径。</p>
@@ -275,7 +275,7 @@ history -5
 <p>小问题：<code>~/Desktop</code>是相对路径还是绝对路径？（A：绝对路径。因为<code>~</code>和<code>/User/yangxijie</code>是等价的）</p>
 <p>（好的习惯是目录后面再加一个斜杠，而文件后面不加（我因为这个吃过亏，但还是懒得改））</p>
 <h3><a class="header" href="#cd" id="cd">cd</a></h3>
-<p>跳转shell的当前工作目录到指定的目录</p>
+<p>跳转<code>shell</code>的当前工作目录到指定的目录</p>
 <p>这时我们就可以来验证上面学到的相对路径了</p>
 <p>不过我们先试试绝对路径。再来相对路径</p>
 <p>（查看命令前面的符号）</p>
@@ -283,15 +283,15 @@ history -5
 <p>但是要调用这样的程序未免也太长了吧，我们能不能简化一些？</p>
 <p>先<code>cd</code>到<code>/Users/yangxijie/Desktop</code>这时里面会有一个可执行文件</p>
 <p>直观的想法是<code>say_hello</code></p>
-<p>但是进入目录后直接输入字符串zsh会把这个当作一条命令然后它发现并没有找到这个命令（当然了say_hello不是shell的内建命令环境变量里面也没有它所以当然出现下面的提示了<code>zsh: command not found: say_hello</code></p>
-<p>怎么让shell知道输入的<code>say_hello</code>不是命令而是我们想要执行的程序呢？我们输入<code>./say_hello</code>就好了。相当于写了一个绝对路径对吧（<code>.</code>相当于pwd带入）</p>
+<p>但是进入目录后直接输入字符串<code>zsh</code>会把这个当作一条命令然后它发现并没有找到这个命令（当然了<code>say_hello</code>不是<code>shell</code>的内建命令环境变量里面也没有它所以当然出现下面的提示了<code>zsh: command not found: say_hello</code></p>
+<p>怎么让<code>shell</code>知道输入的<code>say_hello</code>不是命令而是我们想要执行的程序呢？我们输入<code>./say_hello</code>就好了。相当于写了一个绝对路径对吧（<code>.</code>相当于pwd带入）</p>
 <h2><a class="header" href="#总结" id="总结">总结</a></h2>
 <p>以上我们主要学习了两种内建命令：一种与文件系统/路径无关，一种与文件系统/路径有关。但是之后我们也不会去区分这两种命令了。</p>
 <p>也就是说，之后命令就是命令，不管那是内建的还是系统的、也不管它和文件系统、路径是否沾边。</p>
-<p>之前这么讲是希望大家能有一个较为清晰的思路认识这些命令、认识shell解析命令与执行程序的关系。但是之后在敲命令的不用太过考虑这些东西，命令就是命令，就只是一个单词、只是一句话而已。</p>
+<p>之前这么讲是希望大家能有一个较为清晰的思路认识这些命令、认识<code>shell</code>解析命令与执行程序的关系。但是之后在敲命令的不用太过考虑这些东西，命令就是命令，就只是一个单词、只是一句话而已。</p>
 <h2><a class="header" href="#shell常用命令" id="shell常用命令">shell常用命令</a></h2>
-<p>接下来我们还会再介绍一些shell常用的命令和操作。
-（参考<a href="https://eesast.github.io/training2020/linux-webserver/linux.html">2020年清华大学电子系科协暑培｜Linux</a>）</p>
+<p>接下来我们还会再介绍一些shell常用的命令和操作。</p>
+<p>（参考<a href="https://eesast.github.io/training2020/linux-webserver/linux.html">2020年清华大学电子系科协暑培｜Linux</a>）</p>
 <h4><a class="header" href="#ls" id="ls">ls</a></h4>
 <p>列出当前文件夹下的所有文件</p>
 <pre><code class="language-bash">ls
@@ -303,7 +303,7 @@ ls -l
 </code></pre>
 <h4><a class="header" href="#clear" id="clear">clear</a></h4>
 <p>清空终端中存在的已经执行过的命令</p>
-<p>（history仍然可以查看）</p>
+<p>（<code>history</code>仍然可以查看）</p>
 <h4><a class="header" href="#mkdir" id="mkdir">mkdir</a></h4>
 <p>在当前目录下创建文件夹</p>
 <h4><a class="header" href="#touch" id="touch">touch</a></h4>
@@ -320,12 +320,12 @@ ls -l
 open -a Visual\ Studio\ Code.app foo.md
 open $(pwd)
 </code></pre>
-<p><code>-a</code>参数制定打开的程序（需要使用程序全名）
-<code>$(pwd)</code>表示当前目录，<code>open $(pwd)</code>表示用Finder打开shell当前的工作目录</p>
+<p><code>-a</code>参数制定打开的程序（需要使用程序全名）</p>
+<p><code>$(pwd)</code>表示当前目录，<code>open $(pwd)</code>表示用<code>Finder</code>打开<code>shell</code>当前的工作目录</p>
 <h4><a class="header" href="#man" id="man">man</a></h4>
-<p>以date为例</p>
+<p>以<code>date</code>为例</p>
 <p>（有的没有）</p>
-<p>--help（但是有的也没有）</p>
+<p><code>--help</code>（但是有的也没有）</p>
 <h2><a class="header" href="#shell常用的操作" id="shell常用的操作">shell常用的操作</a></h2>
 <h4><a class="header" href="#输出流重定向" id="输出流重定向">输出流重定向</a></h4>
 <p>还记得<code>echo</code>吗？</p>
@@ -335,7 +335,7 @@ echo &quot;hhhh&quot; &gt; my.txt
 echo &quot;hahahaha&quot; &gt;&gt; my.txt
 </code></pre>
 <h4><a class="header" href="#管道" id="管道">管道</a></h4>
-<p>上一个命令（程序）的输出作为下一个命令的输入</p>
+<p><code>|</code>: 上一个命令（程序）的输出作为下一个命令的输入</p>
 <p>比如我想看看我刚刚创建了什么文件夹来着：我可以一条一条翻，但是我也可以搜索啊！</p>
 <pre><code class="language-bash">history
 history | grep &quot;mkdir&quot;
@@ -345,19 +345,19 @@ history | grep &quot;mkdir&quot;
 <p>举例：创建一个含有空格的文件夹，结果发现创建了两个
 加入<code>\</code>或<code>&quot;&quot;</code></p>
 <h2><a class="header" href="#终端进阶与常用的终端操作" id="终端进阶与常用的终端操作">终端进阶与常用的终端操作</a></h2>
-<p>如果大家想对终端、shell、命令行深入了解，可以查看下面的课程：</p>
+<p>如果大家想对终端、<code>shell</code>、命令行深入了解，可以查看下面的课程：</p>
 <p>这是对我帮助很大的一门课程</p>
 <p><a href="https://missing-semester-cn.github.io">计算机教育中缺失的一课 The Missing Semester of Your CS Education 中文版</a></p>
 <h4><a class="header" href="#where" id="where">where</a></h4>
-<p>where也是一个shell内建命令。where和which的功能差不多，也是告诉我们一个命令如何被shell解析。区别是，shell能够告诉我们shell去解析这个命令的全部可能性。</p>
+<p><code>where</code>也是一个<code>shell</code>内建命令。<code>where</code>和<code>which</code>的功能差不多，也是告诉我们一个命令如何被<code>shell</code>解析。区别是，<code>shell</code>能够告诉我们<code>shell</code>去解析这个命令的全部可能性。</p>
 <pre><code class="language-bash">where which
 </code></pre>
-<p>我们可以看到，其实在shell输入命令<code>which</code>的时候，shell觉得：啊，这个单词有两种方法可以被我解析：第一种是我自己带的内建程序；第二种是系统自带的程序；不过我自己用我自己自带的程序效率更快，毕竟是我自己的东西，所以就用自己的喽。其实，我感觉which就是where的第一行，对吧。</p>
+<p>我们可以看到，其实在<code>shell</code>输入命令<code>which</code>的时候，<code>shell</code>觉得：啊，这个单词有两种方法可以被我解析：第一种是我自己带的内建程序；第二种是系统自带的程序；不过我自己用我自己自带的程序效率更快，毕竟是我自己的东西，所以就用自己的喽。其实，我感觉<code>which</code>就是<code>where</code>的第一行，对吧。</p>
 <h4><a class="header" href="#vim极简入门只要能写东西进去就好了" id="vim极简入门只要能写东西进去就好了">vim极简入门（只要能写东西进去就好了）</a></h4>
 <p>（编辑一个文本为例）</p>
-<p>推出插入模式并保存退出：⎋ 冒号 wq 回车</p>
+<p>推出插入模式并保存退出：⎋ 冒号 <code>wq</code> 回车</p>
 <h4><a class="header" href="#d" id="d">⌃D</a></h4>
-<p>（bash举例）</p>
+<p>（<code>bash</code>举例）</p>
 <h4><a class="header" href="#chmod" id="chmod">chmod</a></h4>
 <p>修改文件权限。</p>
 <p>如果你希望一个文件有可执行权限：</p>
@@ -365,38 +365,38 @@ history | grep &quot;mkdir&quot;
 </code></pre>
 <p>（没有深入）</p>
 <h2><a class="header" href="#回顾" id="回顾">回顾</a></h2>
-<p>如果要总结这节课所学的终端、shell与之前课程的联系，那就是把之前很长的命令给简化了。原本调用程序的过程我都扔给shell去做，我敲命令告诉shell干什么就ok了。</p>
+<p>如果要总结这节课所学的终端、<code>shell</code>与之前课程的联系，那就是把之前很长的命令给简化了。原本调用程序的过程我都扔给<code>shell</code>去做，我敲命令告诉<code>shell</code>干什么就ok了。</p>
 <p>比如：</p>
 <h3><a class="header" href="#简化前面的命令-之-创建文件夹" id="简化前面的命令-之-创建文件夹">简化前面的命令 之 创建文件夹</a></h3>
-<p><code>/bin/mkdir /Users/yangxijie/Desktop/newFolder</code>这样我们可以先cd过去</p>
-<p>前面省略程序路径是因为shell知道你那个单词代表路径为<code>/bin/mkdir</code>的程序，所以我们省略交给shell一个单词就好。</p>
-<p>后面为什么可以省略呢？那是因为shell有一个叫当前工作目录的东西，因此很多绝对路径可以用相对路径来代替。我们可以先cd到需要建目录的地方然后敲<code>mkdir newFolder</code></p>
+<p><code>/bin/mkdir /Users/yangxijie/Desktop/newFolder</code>这样我们可以先<code>cd</code>过去</p>
+<p>前面省略程序路径是因为<code>shell</code>知道你那个单词代表路径为<code>/bin/mkdir</code>的程序，所以我们省略交给<code>shell</code>一个单词就好。</p>
+<p>后面为什么可以省略呢？那是因为<code>shell</code>有一个叫当前工作目录的东西，因此很多绝对路径可以用相对路径来代替。我们可以先<code>cd</code>到需要建目录的地方然后敲<code>mkdir newFolder</code></p>
 <h3><a class="header" href="#简化前面的命令-之-执行自己写的程序" id="简化前面的命令-之-执行自己写的程序">简化前面的命令 之 执行自己写的程序</a></h3>
-<p>之前说shell内建的程序和系统的大多数二进制程序都可以通过命令让shell帮我们执行。但是自己写的程序shell是<code>不认识</code>的</p>
+<p>之前说shell内建的程序和系统的大多数二进制程序都可以通过命令让<code>shell</code>帮我们执行。但是自己写的程序<code>shell</code>是<code>不认识</code>的</p>
 <p>但是你仍然可以切换到相应的目录，然后用<code>./&lt;your_execFile&gt;</code></p>
 <h2><a class="header" href="#补充环境变量" id="补充环境变量">补充：环境变量</a></h2>
 <h3><a class="header" href="#引言" id="引言">引言</a></h3>
 <p>我们之前采用了几种方法来简化终端敲命令的长度：</p>
-<p>最开始说的是：shell认识你给它的命令（单词），所以它就帮你用这个命令（单词）找到你需要执行的程序，然后执行这个程序</p>
-<p>后来还讲过一种：因为shell自身有一个<code>当前工作目录</code>，所以关于路径的东西都可以写相对路径。通过cd命令<code>cd</code>到某个目录之后，接下来需要路径的命令都可以省略掉绝对路径而使用相对路径。</p>
-<p>第二种的原理已经很清楚。但是，第一种，也就是最先说的那一种，shell是怎么认识我们给它的单词呢？？？</p>
+<p>最开始说的是：<code>shell</code>认识你给它的命令（单词），所以它就帮你用这个命令（单词）找到你需要执行的程序，然后执行这个程序</p>
+<p>后来还讲过一种：因为<code>shell</code>自身有一个<code>当前工作目录</code>，所以关于路径的东西都可以写相对路径。通过<code>cd</code>命令<code>cd</code>到某个目录之后，接下来需要路径的命令都可以省略掉绝对路径而使用相对路径。</p>
+<p>第二种的原理已经很清楚。但是，第一种，也就是最先说的那一种，<code>shell</code>是怎么认识我们给它的单词呢？？？</p>
 <p>接下来我们简单说一下这个事情。</p>
 <h3><a class="header" href="#环境变量" id="环境变量">环境变量</a></h3>
 <p>查看环境变量</p>
 <pre><code class="language-bash">echo $PATH
 </code></pre>
-<p>其中冒号是分隔符。当你给shell扔了一个命令之后，shell先在自己的内建程序中找有没有这个单词，没找到再到环境变量去找。
-（回顾where）</p>
+<p>其中冒号是分隔符。当你给<code>shell</code>扔了一个命令之后，<code>shell</code>先在自己的内建程序中找有没有这个单词，没找到再到环境变量去找。
+（回顾<code>where</code>）</p>
 <h3><a class="header" href="#为什么要用环境变量呢" id="为什么要用环境变量呢">为什么要用环境变量呢？</a></h3>
 <p>因为一个相同的程序，在不同的计算机上可能安装在不同的位置。</p>
-<p>比如我写了一个python脚本，在脚本的第一行指出了我电脑里面的python路径。然后你看了这个脚本，觉得挺好用的，我就复制了一份给你。结果你的电脑上python并没有装在那里，那不就凉了吗？你执行这个我写的脚本的时候系统就找不到python的解释器于是无法运行这段脚本。</p>
+<p>比如我写了一个<code>python</code>脚本，在脚本的第一行指出了我电脑里面的<code>python</code>路径。然后你看了这个脚本，觉得挺好用的，我就复制了一份给你。结果你的电脑上<code>python</code>并没有装在那里，那不就凉了吗？你执行这个我写的脚本的时候系统就找不到<code>python</code>的解释器于是无法运行这段脚本。</p>
 <h3><a class="header" href="#补充添加环境变量" id="补充添加环境变量">补充：添加环境变量</a></h3>
-<p>添加环境变量等（大家可以自己去了解一下，自己写的程序可以这么搞，但一般都不这么搞。不过你要是下个python解释器，这个时候你就要给python的解释器添加环境变量了，因为很多别的软件都会用到python，这些软件希望它们用一个单词<code>python</code>就能找到python的解释器。（在macOS上这件事情交给brew去做，不用你手动添加；但是Windows上可能你就要手动添加环境变量了））</p>
+<p>添加环境变量等（大家可以自己去了解一下，自己写的程序可以这么搞，但一般都不这么搞。不过你要是下个<code>python</code>解释器，这个时候你就要给<code>python</code>的解释器添加环境变量了，因为很多别的软件都会用到<code>python</code>，这些软件希望它们用一个单词<code>python</code>就能找到<code>python</code>的解释器。（在<code>macOS</code>上这件事情交给<code>brew</code>去做，不用你手动添加；但是<code>Windows</code>上可能你就要手动添加环境变量了））</p>
 <h2><a class="header" href="#其他的工具" id="其他的工具">其他的工具</a></h2>
 <h3><a class="header" href="#shell脚本---组合你的命令" id="shell脚本---组合你的命令">shell脚本 - 组合你的命令</a></h3>
-<p>shell脚本（以我写的处理视频的脚本为例：脚本是一段代码，组合了很多命令<a href="https://github.com/Yang-Xijie/mkv2mp4_fcp">mkv2mp4_fcp</a>）</p>
+<p><code>shell</code>脚本（以我写的处理视频的脚本为例：脚本是一段代码，组合了很多命令<a href="https://github.com/Yang-Xijie/mkv2mp4_fcp">mkv2mp4_fcp</a>）</p>
 <h3><a class="header" href="#homebrew---macos快速安装命令行程序" id="homebrew---macos快速安装命令行程序">homebrew - macOS快速安装命令行程序</a></h3>
-<p>homebrew（在哪里下载图形化界面的程序？App Store。那么在哪里下载命令行程序呢？当然是…Homebrew。就是一个名字。我们可以通过Homebrew来安装各种命令行工具并进行使用（补充：brew也可以用来安装一些图形化工具）<a href="https://brew.sh">brew官网</a>）如果有机会我会出后续的教程</p>
+<p><code>homebrew</code>（在哪里下载图形化界面的程序？<code>App Store</code>。那么在哪里下载命令行程序呢？当然是…<code>Homebrew</code>。就是一个名字。我们可以通过Homebrew来安装各种命令行工具并进行使用（补充：<code>brew</code>也可以用来安装一些图形化工具）<a href="https://brew.sh">brew官网</a>）如果有机会我会出后续的教程</p>
 <h3><a class="header" href="#zsh配置文件" id="zsh配置文件">zsh配置文件</a></h3>
 <p><code>~/.zshrc</code></p>
 <h3><a class="header" href="#配置终端---打造舒适终端" id="配置终端---打造舒适终端">配置终端 - 打造舒适终端</a></h3>
@@ -407,14 +407,14 @@ history | grep &quot;mkdir&quot;
 <p><a href="https://www.cnblogs.com/xishuai/p/mac-iterm2.html">Mac OS 终端利器 iTerm2</a></p>
 <p>如果有机会我会出后续的教程</p>
 <h3><a class="header" href="#用户与群组" id="用户与群组">用户与群组</a></h3>
-<p>用户yxj和sudo root（whoami who等（系统偏好设置的切换用户（不过看我视频教程的人应该都是用自己的mac，所以不会牵扯到这个问题。如果你是linux服务器管理员，那么可能要设置多个用户了。））</p>
+<p>用户<code>yxj</code>和<code>sudo</code> <code>root</code>（<code>whoami</code> <code>who</code>等（系统偏好设置的切换用户（不过看我视频教程的人应该都是用自己的<code>mac</code>，所以不会牵扯到这个问题。如果你是<code>Linux</code>服务器管理员，那么可能要设置多个用户了。））</p>
 <h3><a class="header" href="#查看所有的shell内建命令" id="查看所有的shell内建命令">查看所有的shell内建命令</a></h3>
 <p><code>man builtins</code>可以查看shell的所有内建命令</p>
 <img src="media/16104420934135/16104423335475.jpg" style="zoom:30%"/>
-<p><code>man zshbuiltins</code>可以查看到zsh的所有内建命令。（也可以先<code>man zsh</code>，然后在下方找到这个zshbuiltins）</p>
+<p><code>man zshbuiltins</code>可以查看到zsh的所有内建命令。（也可以先<code>man zsh</code>，然后在下方找到这个<code>zshbuiltins</code>）</p>
 <h2><a class="header" href="#结束" id="结束">结束</a></h2>
-<p>大家估计听完这四节课都着急了，怎么还没见到VSCode的影子呢？</p>
-<p>别急，现在你已经有了足够的基础可以听懂我接下来在讲什么，那我们就开始进入VSCode的大门吧！！！</p>
+<p>大家估计听完这四节课都着急了，怎么还没见到<code>VS Code</code>的影子呢？</p>
+<p>别急，现在你已经有了足够的基础可以听懂我接下来在讲什么，那我们就开始打开<code>VS Code</code>的大门吧！！！</p>
 
                     </main>
 
