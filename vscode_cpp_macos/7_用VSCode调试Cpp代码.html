@@ -93,7 +93,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../foreword/site_info.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../vscode_cpp_macos/0_about.html">Cpp in VSCode on macOS</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/1_前言和课程说明.html">1 前言和课程说明</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/2_认识mac的文件系统.html">2 认识mac的文件系统</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/3_认识程序.html">3 认识程序</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/4_认识终端和shell.html">4 认识终端和shell</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/5_开启VSCode的大门.html">5 开启VSCode的大门</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/6_VSCode代码运行自动化.html">6 VSCode代码运行自动化</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/7_用VSCode调试Cpp代码.html" class="active">7 用VSCode调试Cpp代码</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/8_课程回顾.html">8 课程回顾</a></li><li class="chapter-item expanded affix "><a href="../vscode_cpp_macos/9_others.html">其他</a></li><li class="chapter-item expanded affix ">极速版教程</li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../postscript/support.html">Support</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../postscript/site_build.html">About the Site</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../foreword/site_info.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../vscode_cpp_macos/0_about.html">Cpp in VSCode on macOS</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/1_前言和课程说明.html">1 前言和课程说明</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/2_认识mac的文件系统.html">2 认识mac的文件系统</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/3_认识程序.html">3 认识程序</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/4_认识终端和shell.html">4 认识终端和shell</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/5_开启VSCode的大门.html">5 开启VSCode的大门</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/6_VSCode代码运行自动化.html">6 VSCode代码运行自动化</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/7_用VSCode调试Cpp代码.html" class="active">7 用VSCode调试Cpp代码</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/8_课程回顾.html">8 课程回顾</a></li><li class="chapter-item expanded affix "><a href="../vscode_cpp_macos/9_others.html">其他</a></li><li class="chapter-item expanded affix ">极速版</li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../postscript/support.html">Support</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../postscript/site_build.html">About the Site</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -193,27 +193,28 @@
 <h1><a class="header" href="#前言" id="前言">前言</a></h1>
 <p>调试是什么，就是<code>debug</code>（查看<code>Run -&gt; Start Debugging</code>）。<code>debug</code>是什么：你在写代码的时候会有一些地方写的有问题，这些问题就被称作<code>bug</code>。<code>bug</code>原意为虫子。<code>de-</code>前缀有去除的意思，<code>debug</code>就是指“去掉虫子”，也就是找代码中的错并改正。仔细看<code>VS Code</code>边栏的运行图标，发现就有一只虫子。</p>
 <p>至于为什么<code>debug</code>被翻译为调试呢？大概就是说，你调一调（调整）代码，试着改一改代码，就把错误找出来了。</p>
-<p>这一课会大量参考<code>VS Code</code>的官方文档，这是因为一份配置文件怎么写，不会有什么教程比官方文档写得更清楚了。是的，包括我现在正在录制的这一课的教程。我推荐你直接看官方的文档；不过，我还是有那么一丢丢自信比官网文档总结的好那么一点点。所以，你可以先听我讲的，如果觉得我哪里讲得不好，你可以移步官方文档查看对应的部分。</p>
+<p>这一课会大量参考<code>VS Code</code>的官方文档，这是因为一份配置文件怎么写，不会有什么教程比官方文档写得更清楚了。是的，包括我现在正在录制的这一课的教程。我推荐你直接看官方的文档；不过，我还是有那么一丢丢自信比官网文档总结的好那么一点点（因为自己在配置的时候总会遇到一些坑，我会帮你跳过这些坑）。所以，你可以先听我讲的，如果觉得我哪里讲得不好，你可以移步官方文档查看对应的部分。</p>
 <p>首先先简单看一看这些文档吧。</p>
 <h1><a class="header" href="#important-docs" id="important-docs">Important Docs</a></h1>
 <p><a href="https://code.visualstudio.com/docs">VS Code｜docs</a></p>
 <h2><a class="header" href="#vs-codeuser-guide" id="vs-codeuser-guide">VS Code｜User Guide</a></h2>
 <h3><a class="header" href="#user-guidetasks" id="user-guidetasks">User Guide｜Tasks</a></h3>
-<p>Tasks in VS Code can be configured to run scripts and start processes so that many of these existing tools can be used from within VS Code without having to enter a command line or write new code.</p>
+<p>Tasks in VS Code can be configured to <strong>run scripts</strong> and <strong>start processes</strong> so that many of these existing tools can be used from within VS Code <strong>without having to enter a command line</strong> or write new code.</p>
 <p>Workspace or folder specific tasks are configured from the <code>tasks.json</code> file in the <code>.vscode</code> folder for a workspace.</p>
 <p><a href="https://code.visualstudio.com/docs/editor/tasks">VS Code｜User Guide｜Integrate with External Tools via Tasks</a></p>
-<p>在<code>VS Code</code>中可以自定义一些task（任务），这些任务会帮你自动化执行一些东西。任务的配置文件是<code>tasks.json</code></p>
+<p>在<code>VS Code</code>中可以自定义一些task（任务），这些任务会帮你自动化执行一些东西。任务的配置文件是<code>tasks.json</code>。我们希望定义一个编译程序的task，以后调试（<code>debug</code>）之前都会自动执行这个task。</p>
 <h3><a class="header" href="#user-guidedebugging" id="user-guidedebugging">User Guide｜Debugging</a></h3>
-<p>One of the key features of Visual Studio Code is its great debugging support. VS Code's built-in debugger helps accelerate your edit, compile and debug loop.</p>
-<p>VS Code keeps debugging configuration information in a <code>launch.json</code> file located in a <code>.vscode</code> folder in your workspace (project root folder).</p>
+<p>One of the key features of Visual Studio Code is its great <strong>debugging support</strong>. VS Code's <strong>built-in debugger</strong> helps accelerate your edit, compile and debug loop.</p>
+<p>VS Code keeps <strong>debugging configuration information</strong> in a <code>launch.json</code> file located in a <code>.vscode</code> folder in your workspace (project root folder).</p>
 <p><a href="https://code.visualstudio.com/docs/editor/debugging">VS Code｜User Guide｜Debugging</a></p>
-<p>如果你需要<code>debug</code>，那么<code>VS Code</code>提供了这样的平台。<code>debug</code>的配置文件是<code>launch.json</code></p>
+<p>如果你需要<code>debug</code>，那么<code>VS Code</code>提供了这样的平台。<code>debug</code>的配置文件是<code>launch.json</code>。</p>
 <h3><a class="header" href="#实用技巧输入输出重定向" id="实用技巧输入输出重定向">实用技巧：输入输出重定向</a></h3>
 <p><a href="https://code.visualstudio.com/docs/editor/debugging#_redirect-inputoutput-tofrom-the-debug-target">VS Code｜User Guide｜Debugging | Redirect input/output to/from the debug target</a></p>
+<p>这一点大家可以在这节课后自行了解，我觉得还是挺有用的一个知识点。</p>
 <h2><a class="header" href="#vs-codec" id="vs-codec">VS Code｜C++</a></h2>
 <h3><a class="header" href="#cclang-on-macos" id="cclang-on-macos">C++｜Clang on macOS</a></h3>
 <p><a href="https://code.visualstudio.com/docs/cpp/config-clang-mac">VS Code | C++ | Using Clang in Visual Studio Code</a></p>
-<p>（但是我觉得这一篇实在误人子弟……至少我觉得两处不太妥当；还是看上面的那个<code>User Guide｜Tasks</code>和<code>User Guide｜Debugging</code>吧）</p>
+<p>（虽然这是专门为macOS写的文档，但我觉得这一篇实在误人子弟……至少我觉得两处不太妥当；还是看上面的那个<code>User Guide｜Tasks</code>和<code>User Guide｜Debugging</code>吧）</p>
 <h3><a class="header" href="#cdebug" id="cdebug">C++｜Debug</a></h3>
 <p><a href="https://code.visualstudio.com/docs/cpp/cpp-debug">VS Code | C++ | Debug C++ in Visual Studio Code</a></p>
 <p>（和<code>User Guide｜Debugging</code>相比没有什么新东西）</p>
@@ -236,7 +237,7 @@
       // The task's type. For a custom task, this can either be shell or process.
       // If shell is specified, the command is interpreted as a shell command (for example: bash, cmd, or PowerShell).
       // If process is specified, the command is interpreted as a process to execute.
-      &quot;type&quot;: &quot;shell&quot;,
+      &quot;type&quot;: &quot;shell&quot;,// shell: 输入命令
       // The actual command to execute.
       // 因为g++已经在环境变量中了，所以我们这里写命令就行不用写g++的绝对路径
       &quot;command&quot;: &quot;g++&quot;,
@@ -266,7 +267,7 @@
       // Configures the panel that is used to present the task's output and reads its input.
       &quot;presentation&quot;: {
         // Controls whether the executed command is echoed to the panel. Default is true.
-        &quot;echo&quot;: true, // 打开可以看到编译的命令
+        &quot;echo&quot;: true, // 打开可以看到编译的命令，把命令本身输出一次
         // Controls whether the terminal running the task is revealed or not. Default is &quot;always&quot;.
         //   always: Always reveals the terminal when this task is executed.
         //   silent: Only reveals the terminal if the task exits with an error or the problem matcher finds an error.(会显示错误，但不会显示警告)
@@ -275,7 +276,7 @@
         // Controls whether the panel takes focus. Default is false.
         &quot;focus&quot;: false, // 我的理解是：是否将鼠标移过去。因为这个是编译任务，我们不需要输入什么东西，所以选false
         // Controls if the panel is shared between tasks, dedicated to this task or a new one is created on every run.
-        &quot;panel&quot;: &quot;shared&quot;, // shared:任务的输出使用同一个终端panel（为了少生成几个panel我们选shared）
+        &quot;panel&quot;: &quot;shared&quot;, // shared:不同任务的输出使用同一个终端panel（为了少生成几个panel我们选shared）
         // Controls whether to show the `Terminal will be reused by tasks, press any key to close it` message.
         &quot;showReuseMessage&quot;: true, // 就一句话，你想看就true，不想看就false
         // Controls whether the terminal is cleared before executing the task.
@@ -314,11 +315,12 @@
 }
 </code></pre>
 <h2><a class="header" href="#从上到下讲" id="从上到下讲">从上到下讲……</a></h2>
-<p>（打开终端的task先留着，讲到<code>debug</code>的时候出问题再回来）</p>
+<p>（打开终端的task简单讲一下结构，讲到<code>debug</code>的时候出问题再回来看这个task）</p>
 <h2><a class="header" href="#other-two-choices" id="other-two-choices">Other two choices</a></h2>
 <img src="media/16104430276312/16107072035683.jpg" style="zoom:30%"/>
 <h2><a class="header" href="#总结" id="总结">总结</a></h2>
-<p>你会发现你自己也能在<code>tasks.json</code>里面自己写一个<code>Code Runner</code>了是吧？确实是这样（不过<code>Code Runner</code>的功能还是多一些，也支持别的语言，更方便一些）</p>
+<p>我们已经在<code>tasks.json</code>中创建了一个编译<code>Cpp</code>代码的<code>task</code>，接下来我们就要用编译出来的附带着调试信息的可执行文件去调试我们的代码。</p>
+<p>（你会发现你自己也能在<code>tasks.json</code>里面自己写一个<code>Code Runner</code>了是吧？确实是这样（不过<code>Code Runner</code>的功能还是多一些，也支持别的语言，更方便一些）</p>
 <h1><a class="header" href="#launchjson" id="launchjson">launch.json</a></h1>
 <pre><code class="language-json">{
   // One of the key features of Visual Studio Code is its great debugging support.
@@ -355,7 +357,8 @@
       &quot;cwd&quot;: &quot;${workspaceFolder}&quot;,
       // break immediately when the program launches
       &quot;stopAtEntry&quot;: false,
-      &quot;internalConsoleOptions&quot;: &quot;openOnFirstSessionStart&quot;,
+      // If true, a console is launched for the debuggee.
+      // If false, on Linux and Windows, it will appear in the Integrated Console.
       &quot;externalConsole&quot;: true,
       // 为true则会打开系统终端在其中进行交互
       // 如果为 true，则为调试对象启动控制台。如果为 false，它在 Linux 和 Windows 上会显示在集成控制台中
@@ -374,13 +377,13 @@
 
 int main() { printf(&quot;\n\nHello, world!\n\n&quot;); }
 </code></pre>
-<p>直接<code>F5</code>开始调试（可能需要在边栏Run哪里勾选）</p>
+<p>直接<code>F5</code>开始调试（如果你设置了多个launch可能需要在边栏Run哪里勾选相应的）</p>
 <p>你会发现出现问题，终端没有<code>Hello, world!</code>。这是什么原因呢？？？</p>
 <p><a href="https://github.com/microsoft/vscode-cpptools/issues/5079">GitHub issue｜VS Code因权限无法打开系统终端</a>（大概<code>1/2</code>的地方）</p>
 <img src="media/16104430276312/16107361192670.jpg" style="zoom:30%"/>
 <p>回到<code>tasks.json</code> ⇧⌘P执行，给<code>VS Code</code>打开终端的权限，解决问题</p>
 <h2><a class="header" href="#调整终端和vs-code的位置" id="调整终端和vs-code的位置">调整终端和VS Code的位置</a></h2>
-<p>长按女色的按钮，终端放在屏幕左边，<code>VS Code</code>放在屏幕右边。</p>
+<p>长按绿色的按钮，将终端放在屏幕左边，<code>VS Code</code>放在屏幕右边。</p>
 <p>在调试多次之后可以使用快捷键：⇧⌘W关闭全部。或直接⌘Q退出终端</p>
 <h2><a class="header" href="#使用vs-code的集成终端" id="使用vs-code的集成终端">使用VS Code的集成终端？</a></h2>
 <p>如何在调试的时候不使用系统的终端而使用<code>VS Code</code>的集成终端？</p>
@@ -391,7 +394,7 @@ int main() { printf(&quot;\n\nHello, world!\n\n&quot;); }
 <p><a href="https://code.visualstudio.com/docs/cpp/launch-json-reference#_externalconsole">VS Code官方文档｜Configuring C/C++ debugging之externalConsole</a></p>
 <img src="media/16013676677088/16015722057456.jpg" style="zoom:30%"/>
 <h2><a class="header" href="#调试举例" id="调试举例">调试举例</a></h2>
-<p>我想了好久也没找到简单又有点意思的例子……真正要用到debug的时候我觉得应该是数据结构与算法的题目，但我这个只是简单教程，我也不想把数算题扯进来。所以真的很抱歉！这一块的调试大家在自己写的程序遇到bug的时候自行体验……</p>
+<p>我想了好久也没找到简单又有点意思的例子……真正要用到<code>debug</code>的时候我觉得应该是数据结构与算法的题目，但我这个只是简单教程，我也不想把数算题扯进来。所以真的很抱歉！这一块的调试大家在自己写的程序遇到<code>bug</code>的时候自行体验……</p>
 <pre><code class="language-cpp">#include &lt;cstdio&gt;
 
 int twoSum(int a, int b) { return a + b; }
@@ -405,10 +408,10 @@ int main() { printf(&quot;Addition = %d\n&quot;, fourSum(1, 2, 3, 4)); }
 <h1><a class="header" href="#补充" id="补充">补充</a></h1>
 <p>我的想法是希望你在一个文件夹<code>Cpp</code>中写所有的Cpp代码，这在学习<code>Cpp</code>和编写简单<code>Cpp</code>代码时是非常合适的（我这么做发现很方便）。但是请注意：如果你用<code>VS Code</code>来做一个<code>C++</code>项目，那最好还是另开一个新的文件夹；毕竟在<code>VS Code</code>中，一个文件夹就是一个项目。（但其实在我们现在用的这个<code>Cpp</code>文件夹新建一个文件夹也足够了）</p>
 <h1><a class="header" href="#总结-1" id="总结-1">总结</a></h1>
-<p>这节课我们主要学习了如何写两份配置文件：<code>tasks.json</code>可以用配置任务实现自动化；<code>launch.json</code>用来配置<code>VS Code</code>调试的方法。现在，如果你只是要执行你的代码，⌘R直接用插件<code>Code Runner</code>解决问题，非常快。如果你需要调试，那就打上断点，然后F5（或者触控栏上的播放按钮）；由于可能需要多次打开调试，这时你需要将终端和<code>VS Code</code>分屏获得好一些的体验。</p>
+<p>这节课我们主要学习了如何写两份配置文件：<code>tasks.json</code>可以用配置任务实现自动化；<code>launch.json</code>用来配置<code>VS Code</code>调试的方法。现在，如果你只是要执行你的代码，⌘R直接用插件<code>Code Runner</code>解决问题，非常快。如果你需要调试，那就打上断点，然后<code>F5</code>（或者触控栏上的播放按钮）；由于可能需要多次打开调试，这时你需要将终端和<code>VS Code</code>分屏获得好一些的体验。</p>
 <p>上节课说这是最后一节课，但我之后应该还会录制两节课。一节是课程回顾，会讲讲这门课的设计思路，同时也会安利一些我自己用的插件，顺便也推荐一些可以深入学习的地方。另一节准备做一个极速版的教程，因为对于一些心急的人来说，可能总共加起来快5个小时的视频教程还是有一些长；另外对于认真听完课程的同学，可能也需要一个快速回顾如何配置编程环境的总结性视频。</p>
 <p>如果你跟着这六节课（除去最开始的一节）走下来，我相信你会少走很多弯路。以后写代码也会觉得很舒适。还记得我在第一节课说的课程目标吗？我希望这份教程能让一年半前刚刚拿着<code>mac</code>入门<code>Cpp</code>编程的我少一年的迷茫，我想我应该做到了这一点。</p>
-<p>这一节课就到这里了！</p>
+<p>这一节课就到这里了！感谢大家听到现在，希望大家能通过这几节课的教程有所收获！</p>
 
                     </main>
 
