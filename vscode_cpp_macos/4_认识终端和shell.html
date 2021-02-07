@@ -319,9 +319,10 @@ ls -l
 <pre><code class="language-bash">open foo.md
 open -a Visual\ Studio\ Code.app foo.md
 open $(pwd)
+open .
 </code></pre>
 <p><code>-a</code>参数制定打开的程序（需要使用程序全名）</p>
-<p><code>$(pwd)</code>表示当前目录，<code>open $(pwd)</code>表示用<code>Finder</code>打开<code>shell</code>当前的工作目录</p>
+<p><code>$(pwd)</code>表示当前目录，<code>open $(pwd)</code>表示用<code>Finder</code>打开<code>shell</code>当前的工作目录 (<code>open .</code>也可)</p>
 <h4><a class="header" href="#man" id="man">man</a></h4>
 <p>以<code>date</code>为例</p>
 <p>（有的没有）</p>
