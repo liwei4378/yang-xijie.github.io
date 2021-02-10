@@ -149,8 +149,8 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#在macos上用vs-code写python配置python环境的一种思路" id="在macos上用vs-code写python配置python环境的一种思路">在macOS上用VS Code写Python、配置Python环境的一种思路</a></h1>
-<p>本教程使用Intel MacBook Pro，搭载macOS 11.2 Big Sur录制。python3版本3.9.1，VSCode版本1.53.0。</p>
-<p>注：本教程不一定适用于M1 Mac。不一定适用于10.14 (Mojave)及以前的系统。</p>
+<p>本教程使用<code>Intel</code> <code>MacBook Pro</code>，搭载<code>macOS 11.1 Big Sur</code>录制。<code>Python3</code>版本<code>3.9.1</code>，<code>VS Code</code>版本<code>1.53.0</code>。</p>
+<p>注：本教程不一定适用于<code>M1 Mac</code>。不一定适用于<code>10.14 (Mojave)</code>及以前的系统。</p>
 <p>大家好，我是杨希杰。今天给大家带来的是用<code>macOS</code>在<code>VS Code</code>上写<code>python</code>的教程。注意，我的这份教程并不教你怎么写<code>python</code>代码，而是告诉你一种配置<code>python</code>环境的方式，让你用<code>VS Code</code>、舒舒服服的敲<code>python</code>。</p>
 <p>啊，那为什么是<strong>一种</strong>方式呢？因为<code>python</code>的安装和包的管理有太多种方式了，每个人的电脑里随着使用<code>python</code>的数量也越来越多。我虽然对配置<code>python</code>环境也有一点自信，但是仅仅是对我日常使用的一种配置<code>python</code>环境的方式有自信。这种方式较为简单，我也想分享给大家。</p>
 <p>话不多说，我们直接开始！</p>
@@ -159,7 +159,6 @@
 <h2><a class="header" href="#下载安装command-line-tools" id="下载安装command-line-tools">下载安装Command Line Tools</a></h2>
 <p><code>Command Line Tools</code>是什么？如果你已经开始写了某种语言的代码，但是你还没有安装<code>Command Line Tools</code>，那我强烈推荐你安装。<code>Command Line Tools</code>是苹果推出的命令行工具，里面包含了很多东西——比如<code>C/C++</code>的编译器、调试器，比如<code>Swift</code>的语言包，当然应该也包括我们想要的的<code>python</code>。如果你之后要使用<code>MATLAB</code>，那么<code>MATLAB</code>也会依赖<code>Command Line Tools</code>。所以要写代码一定要安装哦！</p>
 <p>那么如何安装呢？有两种方式。</p>
-<p>那么在哪里下载<code>g++</code>这个程序呢？</p>
 <p>苹果的开发集成工具是<code>Xcode.app</code>，其中就带着<code>Command Line Tools</code>，安装了<code>Xcode</code>相当于安装了<code>Command Line Tools</code>，那么我们可以直接在<code>App Store</code>下载<code>Xcode</code>。不过你打开一看，12G！！太大了吧。
 <code>Command Line Tools</code>不过400MB多一点。如果你不从事苹果平台的软件开发，不需要使用<code>Xcode</code>，下载<code>Xcode</code>这么大的东西占电脑的存储空间，实在划不来。不过如果你已经安装了<code>Xcode</code>，那已经可以跳过这一步了。</p>
 <hr />
@@ -180,8 +179,7 @@
 <h1><a class="header" href="#安装python用命令行执行python脚本" id="安装python用命令行执行python脚本">安装python、用命令行执行python脚本</a></h1>
 <h2><a class="header" href="#查看系统自带的python" id="查看系统自带的python">查看系统自带的python</a></h2>
 <p>首先呢，我们用<code>which python</code>和<code>where python</code>来查看<code>shell</code>如何解析我们的命令。打开文件夹，查看链接，发现链接到了系统自带的<code>2.7</code>版本的<code>python</code>上。</p>
-<pre><code class="language-py">import os
-import sys
+<pre><code class="language-py">import sys
 
 print(&quot;Current python version:&quot;)
 print(sys.version)
@@ -243,7 +241,7 @@ alias pip='pip3'
 <p>那么如何让<code>shell</code>认识这是一个<code>python</code>脚本？既然<code>brew</code>已经将我们新安装的<code>python3</code>放到了环境变量里，所以我们直接用环境变量告诉<code>shell</code>需要调用的<code>python</code>解释器就好了。在脚本的第一行加上：</p>
 <pre><code class="language-zsh">#!/usr/bin/env python3
 </code></pre>
-<p>（原因：python解释器在不同系统中可能被安装于不同的目录，如在 macOS 中装在 <code>/usr/local/bin/python</code>，但是在 linux 上装在 <code>/usr/bin/python</code> 中；<code>env</code> 可以在系统的 <code>PATH 目录 </code> 中查找所需要的解释器，因此你在 Mac 上写的 py 脚本直接复制到 Linux 一样可以执行（Windows 不是这么执行脚本的所以我也不清楚复制过去行不行哈））</p>
+<p>（原因：<code>python</code>解释器在不同系统中可能被安装于不同的目录，如在 <code>macOS</code> 中装在 <code>/usr/local/bin/python</code>，但是在 <code>linux</code> 上装在 <code>/usr/bin/python</code> 中；<code>env</code> 可以在系统的 <code>PATH 目录 </code> 中查找所需要的解释器，因此你在 <code>Mac</code> 上写的 <code>py</code> 脚本直接复制到 <code>Linux</code> 一样可以执行（<code>Windows</code> 不是这么执行脚本的所以我也不清楚复制过去行不行哈））</p>
 <p>再次尝试绝对路径和相对路径，成功。</p>
 <h1><a class="header" href="#配置vs-code写python代码的环境" id="配置vs-code写python代码的环境">配置VS Code写python代码的环境</a></h1>
 <h2><a class="header" href="#下载vs-code" id="下载vs-code">下载VS Code</a></h2>
