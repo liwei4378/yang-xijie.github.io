@@ -93,7 +93,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../foreword/site_info.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../vscode_cpp_macos/0_about.html">Cpp in VSCode on macOS</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/1_前言和课程说明.html">1 前言和课程说明</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/2_认识mac的文件系统.html">2 认识mac的文件系统</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/3_认识程序.html">3 认识程序</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/4_认识终端和shell.html">4 认识终端和shell</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/5_开启VSCode的大门.html">5 开启VSCode的大门</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/6_VSCode代码运行自动化.html">6 VSCode代码运行自动化</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/7_用VSCode调试Cpp代码.html" class="active">7 用VSCode调试Cpp代码</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/8_课程回顾.html">8 课程回顾</a></li><li class="chapter-item expanded affix "><a href="../vscode_cpp_macos/9_others.html">其他</a></li><li class="chapter-item expanded affix "><a href="../vscode_cpp_macos/10_极速版.html">极速版</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../postscript/support.html">Support</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../postscript/site_build.html">About the Site</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../foreword/site_info.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../vscode_cpp_macos/0_about.html">Cpp in VSCode on macOS</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/1_前言和课程说明.html">1 前言和课程说明</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/2_认识mac的文件系统.html">2 认识mac的文件系统</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/3_认识程序.html">3 认识程序</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/4_认识终端和shell.html">4 认识终端和shell</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/5_开启VSCode的大门.html">5 开启VSCode的大门</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/6_VSCode代码运行自动化.html">6 VSCode代码运行自动化</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/7_用VSCode调试Cpp代码.html" class="active">7 用VSCode调试Cpp代码</a></li><li class="chapter-item expanded "><a href="../vscode_cpp_macos/8_课程回顾.html">8 课程回顾</a></li><li class="chapter-item expanded affix "><a href="../vscode_cpp_macos/9_others.html">其他</a></li><li class="chapter-item expanded affix "><a href="../vscode_cpp_macos/10_极速版.html">极速版</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../sharing_mac_android/Mac连接安卓传输数据.html">Share between Mac and Android</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../postscript/support.html">Support</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../postscript/site_build.html">About the Site</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -223,6 +223,8 @@
 <p><a href="https://code.visualstudio.com/docs/cpp/launch-json-reference">VS Code Official Docs | Configuring C/C++ debugging</a></p>
 <p>（很重要的文档，几乎说明了<code>C++</code>调试配置文件<code>launch.json</code>所有选项的含义）</p>
 <h1><a class="header" href="#tasksjson" id="tasksjson">tasks.json</a></h1>
+<p>注意：请尽量不要在任何关于代码和程序的地方出现空格。空格作为<code>shell</code>分隔命令的符号，在路径或文件名中出现空格可能会导致意想不到的后果。你可以将空格替换为下划线，或者直接删掉空格。如将<code>VS Code</code>的文件夹改名为<code>VS_Code</code>或<code>VSCode</code></p>
+<p>我所写的讲稿中<code>Code Runner</code>和<code>编译</code>对空格有很好的处理，但是<code>调试</code>总是处于两难的境地，有了空格就不能调试。很抱歉到现在才发现问题(210110)</p>
 <pre><code class="language-json">{
   // Tasks in VS Code can be configured to run scripts and start processes
   // so that many of these existing tools can be used from within VS Code 
@@ -348,6 +350,7 @@
       &quot;preLaunchTask&quot;: &quot;g++ compile&quot;, //在调试之前要进行的工作 compile是在 tasks.json 的编译任务里面的label
       /* ------ Many debuggers support some of the following attributes: ------ */
       // executable or file to run when launching the debugger
+      // ！！不要在程序和代码的路径及文件名中出现空格！！否则无法调试（我尝试解决这个问题，但真的无法解决）
       &quot;program&quot;: &quot;${fileDirname}/${fileBasenameNoExtension}.out&quot;, // debug的对象(-g编译出来的二进制文件)，需要和.vscode/tasks.json中生成的可执行文件一致
       // arguments passed to the program to debug
       &quot;args&quot;: [], // 比如运行你的程序添加输入参数（argc/argv），需要在这里添加

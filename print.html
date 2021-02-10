@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="foreword/site_info.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="vscode_cpp_macos/0_about.html">Cpp in VSCode on macOS</a></li><li class="chapter-item expanded "><a href="vscode_cpp_macos/1_前言和课程说明.html">1 前言和课程说明</a></li><li class="chapter-item expanded "><a href="vscode_cpp_macos/2_认识mac的文件系统.html">2 认识mac的文件系统</a></li><li class="chapter-item expanded "><a href="vscode_cpp_macos/3_认识程序.html">3 认识程序</a></li><li class="chapter-item expanded "><a href="vscode_cpp_macos/4_认识终端和shell.html">4 认识终端和shell</a></li><li class="chapter-item expanded "><a href="vscode_cpp_macos/5_开启VSCode的大门.html">5 开启VSCode的大门</a></li><li class="chapter-item expanded "><a href="vscode_cpp_macos/6_VSCode代码运行自动化.html">6 VSCode代码运行自动化</a></li><li class="chapter-item expanded "><a href="vscode_cpp_macos/7_用VSCode调试Cpp代码.html">7 用VSCode调试Cpp代码</a></li><li class="chapter-item expanded "><a href="vscode_cpp_macos/8_课程回顾.html">8 课程回顾</a></li><li class="chapter-item expanded affix "><a href="vscode_cpp_macos/9_others.html">其他</a></li><li class="chapter-item expanded affix "><a href="vscode_cpp_macos/10_极速版.html">极速版</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="postscript/support.html">Support</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="postscript/site_build.html">About the Site</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="foreword/site_info.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="vscode_cpp_macos/0_about.html">Cpp in VSCode on macOS</a></li><li class="chapter-item expanded "><a href="vscode_cpp_macos/1_前言和课程说明.html">1 前言和课程说明</a></li><li class="chapter-item expanded "><a href="vscode_cpp_macos/2_认识mac的文件系统.html">2 认识mac的文件系统</a></li><li class="chapter-item expanded "><a href="vscode_cpp_macos/3_认识程序.html">3 认识程序</a></li><li class="chapter-item expanded "><a href="vscode_cpp_macos/4_认识终端和shell.html">4 认识终端和shell</a></li><li class="chapter-item expanded "><a href="vscode_cpp_macos/5_开启VSCode的大门.html">5 开启VSCode的大门</a></li><li class="chapter-item expanded "><a href="vscode_cpp_macos/6_VSCode代码运行自动化.html">6 VSCode代码运行自动化</a></li><li class="chapter-item expanded "><a href="vscode_cpp_macos/7_用VSCode调试Cpp代码.html">7 用VSCode调试Cpp代码</a></li><li class="chapter-item expanded "><a href="vscode_cpp_macos/8_课程回顾.html">8 课程回顾</a></li><li class="chapter-item expanded affix "><a href="vscode_cpp_macos/9_others.html">其他</a></li><li class="chapter-item expanded affix "><a href="vscode_cpp_macos/10_极速版.html">极速版</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="sharing_mac_android/Mac连接安卓传输数据.html">Share between Mac and Android</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="postscript/support.html">Support</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="postscript/site_build.html">About the Site</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -1068,6 +1068,7 @@ cat settings.json
     //   $fileName: The base name of the code file being run, that is the file without the directory
     //   $fileNameWithoutExt: The base name of the code file being run without its extension
     /* ------ 编译、运行只有一个文件的cpp文件 ------ */
+    // 注：路径中有空格不会出现问题
     &quot;cpp&quot;: &quot;g++ $fullFileName -o $dir\&quot;$fileNameWithoutExt\&quot;\&quot;.out\&quot; -W -Wall -O2 -std=c++17 &amp;&amp; $dir\&quot;$fileNameWithoutExt\&quot;\&quot;.out\&quot;&quot;,
     // 其中 $fullFileName 是绝对路径，是主文件
     // 自己决定是否加入 &amp;&amp; rm $dir\&quot;$fileNameWithoutExt\&quot;\&quot;.out\&quot;（也可以添加&quot;files.exclude&quot;）
@@ -1190,6 +1191,8 @@ cat settings.json
 <p><a href="https://code.visualstudio.com/docs/cpp/launch-json-reference">VS Code Official Docs | Configuring C/C++ debugging</a></p>
 <p>（很重要的文档，几乎说明了<code>C++</code>调试配置文件<code>launch.json</code>所有选项的含义）</p>
 <h1><a class="header" href="#tasksjson" id="tasksjson">tasks.json</a></h1>
+<p>注意：请尽量不要在任何关于代码和程序的地方出现空格。空格作为<code>shell</code>分隔命令的符号，在路径或文件名中出现空格可能会导致意想不到的后果。你可以将空格替换为下划线，或者直接删掉空格。如将<code>VS Code</code>的文件夹改名为<code>VS_Code</code>或<code>VSCode</code></p>
+<p>我所写的讲稿中<code>Code Runner</code>和<code>编译</code>对空格有很好的处理，但是<code>调试</code>总是处于两难的境地，有了空格就不能调试。很抱歉到现在才发现问题(210110)</p>
 <pre><code class="language-json">{
   // Tasks in VS Code can be configured to run scripts and start processes
   // so that many of these existing tools can be used from within VS Code 
@@ -1315,6 +1318,7 @@ cat settings.json
       &quot;preLaunchTask&quot;: &quot;g++ compile&quot;, //在调试之前要进行的工作 compile是在 tasks.json 的编译任务里面的label
       /* ------ Many debuggers support some of the following attributes: ------ */
       // executable or file to run when launching the debugger
+      // ！！不要在程序和代码的路径及文件名中出现空格！！否则无法调试（我尝试解决这个问题，但真的无法解决）
       &quot;program&quot;: &quot;${fileDirname}/${fileBasenameNoExtension}.out&quot;, // debug的对象(-g编译出来的二进制文件)，需要和.vscode/tasks.json中生成的可执行文件一致
       // arguments passed to the program to debug
       &quot;args&quot;: [], // 比如运行你的程序添加输入参数（argc/argv），需要在这里添加
@@ -1563,8 +1567,10 @@ int main() { printf(&quot;Addition = %d\n&quot;, fourSum(1, 2, 3, 4)); }
 <p>打开<code>VS Code</code>在插件市场搜索安装<code>C/C++</code>和<code>Code Runner</code></p>
 <h1><a class="header" href="#新建文件夹-1" id="新建文件夹-1">新建文件夹</a></h1>
 <p>在桌面新建名为<code>CODE</code>的文件夹，在其中新建名为<code>Cpp</code>的文件夹。以后我们的所有代码都写在其中。</p>
-<p>注意：关于编程的任何路径尽量不要出现空格，这是因为<code>shell</code>在解析你的命令时会用空格隔开各种参数，如果你的路径中有空格，同时你又处理不得当，<code>shell</code>可能会将其分为两部分。这里我推荐大家在新建文件夹时或给文件起名字的时候都不带空格，或者将空格改为下划线<code>_</code>，这样能有效避免一些错误。</p>
+<p><strong>注意</strong>：关于编程的任何路径尽量不要出现空格，这是因为<code>shell</code>在解析你的命令时会用空格隔开各种参数，如果你的路径中有空格，同时你又处理不得当，<code>shell</code>可能会将其分为两部分。这里我推荐大家在新建文件夹时或给文件起名字的时候都不带空格，或者将空格改为下划线<code>_</code>，这样能有效避免一些错误。</p>
 <p>将文件夹<code>Cpp</code>拖到<code>Dock栏</code>的<code>VS Code</code>上打开该文件夹。</p>
+<p><strong>注意</strong>：请尽量不要在任何关于代码和程序的地方出现空格。空格作为<code>shell</code>分隔命令的符号，在路径或文件名中出现空格可能会导致意想不到的后果。你可以将空格替换为下划线，或者直接删掉空格。如将<code>VS Code</code>的文件夹改名为<code>VS_Code</code>或<code>VSCode</code></p>
+<p>我所写的讲稿中<code>Code Runner</code>和<code>编译</code>对空格有很好的处理，但是<code>调试</code>总是处于两难的境地，有了空格就不能调试。很抱歉到现在才发现问题(210110)</p>
 <h1><a class="header" href="#写三份文件位于vscode文件夹下的文件" id="写三份文件位于vscode文件夹下的文件">写三份文件位于.vscode文件夹下的文件</a></h1>
 <h2><a class="header" href="#settingsjson" id="settingsjson">settings.json</a></h2>
 <p>（注意<code>json</code>文件的格式）</p>
@@ -1598,6 +1604,7 @@ int main() { printf(&quot;Addition = %d\n&quot;, fourSum(1, 2, 3, 4)); }
     //   $fileName: The base name of the code file being run, that is the file without the directory
     //   $fileNameWithoutExt: The base name of the code file being run without its extension
     /* ------ 编译、运行只有一个文件的cpp文件 ------ */
+    // 注：路径中有空格不会出现问题
     &quot;cpp&quot;: &quot;g++ $fullFileName -o $dir\&quot;$fileNameWithoutExt\&quot;\&quot;.out\&quot; -W -Wall -O2 -std=c++17 &amp;&amp; $dir\&quot;$fileNameWithoutExt\&quot;\&quot;.out\&quot;&quot;,
     // 其中 $fullFileName 是绝对路径，是主文件
     // 自己决定是否加入 &amp;&amp; rm $dir\&quot;$fileNameWithoutExt\&quot;\&quot;.out\&quot;（也可以添加&quot;files.exclude&quot;）
@@ -1751,6 +1758,7 @@ int main() { printf(&quot;Addition = %d\n&quot;, fourSum(1, 2, 3, 4)); }
       &quot;preLaunchTask&quot;: &quot;g++ compile&quot;, //在调试之前要进行的工作 compile是在 tasks.json 的编译任务里面的label
       /* ------ Many debuggers support some of the following attributes: ------ */
       // executable or file to run when launching the debugger
+      // ！！不要在程序和代码的路径及文件名中出现空格！！否则无法调试（我尝试解决这个问题，但真的无法解决）
       &quot;program&quot;: &quot;${fileDirname}/${fileBasenameNoExtension}.out&quot;, // debug的对象(-g编译出来的二进制文件)，需要和.vscode/tasks.json中生成的可执行文件一致
       // arguments passed to the program to debug
       &quot;args&quot;: [], // 比如运行你的程序添加输入参数（argc/argv），需要在这里添加
@@ -1830,6 +1838,48 @@ int threeSum(int a, int b, int c) { return a + b + c; }
 
 int fourSum(int a, int b, int c, int d) { return a + b + c + d; }
 </code></pre>
+<h1><a class="header" href="#mac连接安卓传输数据" id="mac连接安卓传输数据">Mac连接安卓传输数据</a></h1>
+<p>此次视频录制于210210</p>
+<p>大家好，我是杨希杰。</p>
+<p>这期教程我来讲讲如何在Mac和安卓之间传输数据。</p>
+<p>如果你用Mac用的很爽，那我还是推荐你买一部iPhone。苹果的生态做的真的很好，比如iCloud、隔空投送、拍照获取、文件传输。不过如果你和我一样用的是Android，那可能稍微要折腾一些。</p>
+<h2><a class="header" href="#安卓投屏mac" id="安卓投屏mac">安卓投屏Mac</a></h2>
+<pre><code class="language-bash">brew install --cask android-platform-tools
+（或brew cask install android-platform-tools（brew 版本低于2.6））
+brew install scrcpy
+adb devices（查看已连接的设备）
+scrcpy
+</code></pre>
+<p><a href="https://blog.csdn.net/weixin_39653448/article/details/111813429">CSDN | Mac上投屏android_macOS+Android，如何用上投屏控制软件scrcpy</a></p>
+<p><a href="https://blog.csdn.net/cupster/article/details/111387005">CSDN | MacOS/BigSur安卓设备投屏控制Scrcpy安装，Mac上的Total Control</a></p>
+<p><a href="https://github.com/Genymobile/scrcpy/blob/master/README.zh-Hans.md">GitHub | Genymobile / scrcpy README（中文）</a></p>
+<p><a href="https://jingyan.baidu.com/article/d5c4b52bb1d28eda570dc558.html">小米手机开发者选项在哪？怎么打开关闭？</a></p>
+<h2><a class="header" href="#微信和qq的文件传输助手" id="微信和qq的文件传输助手">微信和QQ的文件传输助手</a></h2>
+<p>适合传输任何文件（不超过限制大小）。如文件过多可以使用压缩包</p>
+<p>注意定期清理传输的文件，若不清理微信会长久保存占用存储空间。</p>
+<p>不适合在网络不佳的情况下使用。</p>
+<h2><a class="header" href="#通过数据线传输数据" id="通过数据线传输数据">通过数据线传输数据</a></h2>
+<p>30MB/s</p>
+<p><img src="sharing_mac_android/media/15971353157286/16129272527593.jpg" alt="-w200" /></p>
+<p><a href="https://www.android.com/filetransfer/">官网下载Android File Transfer</a></p>
+<p><img src="sharing_mac_android/media/15971353157286/16129280421120.jpg" alt="-w466" /></p>
+<h2><a class="header" href="#通过蓝牙传输数据" id="通过蓝牙传输数据">通过蓝牙传输数据</a></h2>
+<p>速度非常慢，但操作简单，适合多个小文件（如图片）等在网络不佳的情况下使用。</p>
+<h3><a class="header" href="#mac-to-android" id="mac-to-android">Mac to Android</a></h3>
+<p><img src="sharing_mac_android/media/15971353157286/16129271283013.jpg" alt="-w600" /></p>
+<h3><a class="header" href="#android-to-mac" id="android-to-mac">Android to Mac</a></h3>
+<p><img src="sharing_mac_android/media/15971353157286/16129281059651.jpg" alt="-w668" /></p>
+<p><img src="sharing_mac_android/media/15971353157286/16129271553176.jpg" alt="-w400" /></p>
+<h2><a class="header" href="#通过连接同一wi-fi共享mac文件夹" id="通过连接同一wi-fi共享mac文件夹">通过连接同一Wi-Fi共享Mac文件夹</a></h2>
+<p><img src="sharing_mac_android/media/15971353157286/16129281462820.jpg" alt="-w668" /></p>
+<h2><a class="header" href="#用u盘传输数据" id="用u盘传输数据">用U盘传输数据</a></h2>
+<p><img src="sharing_mac_android/media/15971353157286/IMG_20210210_122802.jpg" alt="-w400" /></p>
+<h2><a class="header" href="#华为手机使用官方开发的应用" id="华为手机使用官方开发的应用">华为手机使用官方开发的应用</a></h2>
+<p><img src="sharing_mac_android/media/15971353157286/16129314106342.jpg" alt="-w200" /></p>
+<h2><a class="header" href="#ftp" id="ftp">ftp</a></h2>
+<p>只要手机和电脑联网，就能相互获取数据文件</p>
+<p>但是操作过于复杂连接也不够稳定。至少我很少用</p>
+<p><img src="sharing_mac_android/media/15971353157286/16129315438220.jpg" alt="-w500" /></p>
 <h1><a class="header" href="#support-me" id="support-me">Support me</a></h1>
 <img src="postscript/../media/頑張ります.png" style="zoom:45%"/>
 <p>请我一杯咖啡吧？</p>
