@@ -149,6 +149,37 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#在macos上用vs-code写python配置python环境的一种思路" id="在macos上用vs-code写python配置python环境的一种思路">在macOS上用VS Code写Python、配置Python环境的一种思路</a></h1>
+<ul>
+<li><a href="#%E5%9C%A8macos%E4%B8%8A%E7%94%A8vs-code%E5%86%99python%E9%85%8D%E7%BD%AEpython%E7%8E%AF%E5%A2%83%E7%9A%84%E4%B8%80%E7%A7%8D%E6%80%9D%E8%B7%AF">在macOS上用VS Code写Python、配置Python环境的一种思路</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85%E5%BF%85%E8%A6%81%E5%B7%A5%E5%85%B7">安装必要工具</a>
+<ul>
+<li><a href="#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85command-line-tools">下载安装Command Line Tools</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85homebrew">安装Homebrew</a></li>
+<li><a href="#%E6%8E%8C%E6%8F%A1%E7%BB%88%E7%AB%AF%E5%92%8C%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%9A%84%E4%BD%BF%E7%94%A8">掌握终端和命令行的使用</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AE%89%E8%A3%85python%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%89%A7%E8%A1%8Cpython%E8%84%9A%E6%9C%AC">安装python、用命令行执行python脚本</a>
+<ul>
+<li><a href="#%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E8%87%AA%E5%B8%A6%E7%9A%84python">查看系统自带的python</a></li>
+<li><a href="#%E7%94%A8homebrew%E5%AE%89%E8%A3%85python3">用Homebrew安装python3</a></li>
+<li><a href="#%E7%94%A8python3%E6%89%A7%E8%A1%8C%E4%BB%A3%E7%A0%81">用python3执行代码</a></li>
+<li><a href="#%E5%88%9B%E5%BB%BApython%E7%9A%84%E9%93%BE%E6%8E%A5">创建python的链接</a></li>
+<li><a href="#%E7%94%A8%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84%E5%92%8C%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E6%89%A7%E8%A1%8Cpython%E8%84%9A%E6%9C%AC">用绝对路径和相对路径执行python脚本</a></li>
+</ul>
+</li>
+<li><a href="#%E9%85%8D%E7%BD%AEvs-code%E5%86%99python%E4%BB%A3%E7%A0%81%E7%9A%84%E7%8E%AF%E5%A2%83">配置VS Code写python代码的环境</a>
+<ul>
+<li><a href="#%E4%B8%8B%E8%BD%BDvs-code">下载VS Code</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85python%E6%8F%92%E4%BB%B6">安装python插件</a></li>
+<li><a href="#%E5%9C%A8settingsjson%E4%B8%AD%E6%B7%BB%E5%8A%A0">在settings.json中添加</a></li>
+<li><a href="#%E7%94%A8vs-code%E8%B0%83%E8%AF%95python%E4%BB%A3%E7%A0%81">用VS Code调试python代码</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85%E5%85%B6%E4%BB%96%E6%8F%92%E4%BB%B6">安装其他插件</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6code-runner">安装插件Code Runner</a></li>
+</ul>
+</li>
+<li><a href="#%E7%BB%93%E8%AF%AD">结语</a></li>
+<li><a href="#%E5%85%B6%E4%BB%96">其他</a></li>
+</ul>
 <p>本教程使用<code>Intel</code> <code>MacBook Pro</code>，搭载<code>macOS 11.1 Big Sur</code>录制。<code>Python3</code>版本<code>3.9.1</code>，<code>VS Code</code>版本<code>1.53.0</code>。</p>
 <p>注：本教程不一定适用于<code>M1 Mac</code>。不一定适用于<code>10.14 (Mojave)</code>及以前的系统。</p>
 <p>大家好，我是杨希杰。今天给大家带来的是用<code>macOS</code>在<code>VS Code</code>上写<code>python</code>的教程。注意，我的这份教程并不教你怎么写<code>python</code>代码，而是告诉你一种配置<code>python</code>环境的方式，让你用<code>VS Code</code>、舒舒服服的敲<code>python</code>。</p>
@@ -298,6 +329,8 @@ alias pip='pip3'
 <h1><a class="header" href="#结语" id="结语">结语</a></h1>
 <p>希望这份教程能对大家有帮助！</p>
 <p>如果还想深入了解如何在<code>VS Code</code>中更好的写<code>python</code>，可以查看<a href="https://code.visualstudio.com/docs">VS Code官方文档</a></p>
+<h1><a class="header" href="#其他" id="其他">其他</a></h1>
+<p><a href="https://blog.csdn.net/qq_45379253/article/details/113879292">CSDN | VS Code python 包导入报错 unresolved import 的解决措施</a></p>
 
                     </main>
 
