@@ -187,7 +187,12 @@
 <li><a href="#%E5%85%B6%E4%BB%96%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7">其他调试技巧</a></li>
 </ul>
 </li>
-<li><a href="#%E8%A1%A5%E5%85%85">补充</a></li>
+<li><a href="#%E8%A1%A5%E5%85%85">补充</a>
+<ul>
+<li><a href="#%E9%9C%80%E8%A6%81%E6%96%B0%E5%BB%BA%E5%B7%A5%E4%BD%9C%E5%8C%BA%E5%90%97">需要新建工作区吗？</a></li>
+<li><a href="#%E6%9C%89%E4%BA%9B%E5%85%B6%E4%BB%96%E6%95%99%E7%A8%8B%E9%87%8C%E9%9D%A2%E7%9A%84c_cpp_propertiesjson%E6%98%AF%E5%B9%B2%E4%BB%80%E4%B9%88%E7%9A%84">有些其他教程里面的c_cpp_properties.json是干什么的？</a></li>
+</ul>
+</li>
 <li><a href="#%E6%80%BB%E7%BB%93-1">总结</a></li>
 </ul>
 <h1><a class="header" href="#前言" id="前言">前言</a></h1>
@@ -409,7 +414,16 @@ int main() { printf(&quot;Addition = %d\n&quot;, fourSum(1, 2, 3, 4)); }
 <img src="media/16104430276312/16107116310057.jpg" style="zoom:30%"/>
 <p>大家自己体验一下，我就不做过多的解释了。</p>
 <h1><a class="header" href="#补充" id="补充">补充</a></h1>
+<h2><a class="header" href="#需要新建工作区吗" id="需要新建工作区吗">需要新建工作区吗？</a></h2>
 <p>我的想法是希望你在一个文件夹<code>Cpp</code>中写所有的Cpp代码，这在学习<code>Cpp</code>和编写简单<code>Cpp</code>代码时是非常合适的（我这么做发现很方便）。但是请注意：如果你用<code>VS Code</code>来做一个<code>C++</code>项目，那最好还是另开一个新的文件夹；毕竟在<code>VS Code</code>中，一个文件夹就是一个项目。（但其实在我们现在用的这个<code>Cpp</code>文件夹新建一个文件夹也足够了）</p>
+<h2><a class="header" href="#有些其他教程里面的c_cpp_propertiesjson是干什么的" id="有些其他教程里面的c_cpp_propertiesjson是干什么的">有些其他教程里面的c_cpp_properties.json是干什么的？</a></h2>
+<p>(210224补充)</p>
+<p>我们可以直接查看<code>VS Code</code>官网关于这份文件的文档：</p>
+<p><a href="https://code.visualstudio.com/docs/cpp/c-cpp-properties-schema-reference">VS Code Docs | c_cpp_properties.json reference</a></p>
+<p><a href="https://code.visualstudio.com/docs/cpp/customize-default-settings-cpp">VS Code Docs | Customizing default settings</a></p>
+<p>之前没了解过这个文件，看了文档之后，我感觉<code>c_cpp_properties.json</code>仅仅是用来替换掉在<code>设置</code>或者是<code>settings.json</code>中出现的 <code>C_Cpp.default.*</code>的这些选项，把这些设置提了出来放到这个文件里面，这个文件也会对这些设置提供一些好的语法，让你更方便的设置这些项；也可以在<code>tasks.json</code>和<code>launch.json</code>中调用这些配置。</p>
+<p>如果不需要设置<code>C_Cpp.default.*</code>里面的选项，那么就不需要这个<code>c_cpp_properties.json</code>。</p>
+<p>我的教程直接从命令行入手了，这里面的设置我都直接用<code>g++</code>编译器的参数代替了，所以不需要设置这些选项。</p>
 <h1><a class="header" href="#总结-1" id="总结-1">总结</a></h1>
 <p>这节课我们主要学习了如何写两份配置文件：<code>tasks.json</code>可以用配置任务实现自动化；<code>launch.json</code>用来配置<code>VS Code</code>调试的方法。现在，如果你只是要执行你的代码，⌘R直接用插件<code>Code Runner</code>解决问题，非常快。如果你需要调试，那就打上断点，然后<code>F5</code>（或者触控栏上的播放按钮）；由于可能需要多次打开调试，这时你需要将终端和<code>VS Code</code>分屏获得好一些的体验。</p>
 <p>上节课说这是最后一节课，但我之后应该还会录制两节课。一节是课程回顾，会讲讲这门课的设计思路，同时也会安利一些我自己用的插件，顺便也推荐一些可以深入学习的地方。另一节准备做一个极速版的教程，因为对于一些心急的人来说，可能总共加起来快5个小时的视频教程还是有一些长；另外对于认真听完课程的同学，可能也需要一个快速回顾如何配置编程环境的总结性视频。</p>
